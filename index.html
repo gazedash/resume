@@ -1,22 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Andrei Efremov CV</title>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
+        @page { size: auto;  margin: 0mm; }
+            /* @media print {
+  .job {page-break-after: always;}
+        } */
+        .project-title-container h6 {
+            font-size: 14px;
+        }
+        .achievement {
+            font-size: 14px;
+        }
+        .stack {
+            font-size: 12px;
         }
     </style>
-</head>
+  </head>
+  <body>
+    <div id="app">
+      <section class="m-4">
+        <header>
+          <div class="d-flex justify-content-between">
+            <!-- info -->
+            <div>
+              <h1>{{ info.name }}</h1>
+              <h3>{{ info.position }}</h3>
+            </div>
+            <div>
+              <!-- links -->
+              <div>
+                <div v-for="link in links" class="">
+                  <i :class="link.icon"></i>
+                  <a :href="link.href">
+                    <span> {{ link.title }} </span>
+                  </a>
+                </div>
+                <div class="pt-3 d-print-none">
+                    <button class="btn btn-primary" onclick="window.print()">
+                        <i class="fa fa-print"></i>
+                        Print
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </section>
+      <section class="m-4">
+        <!-- Work Experience -->
+        <h5>Work Experience</h5>
+        <div class="">
+          <div v-for="job in jobs" class="job">
+            <h6>
+              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration }} /
+              {{ job.city }}
+            </h6>
+            <div>
+              <div v-for="project in job.projects">
+                <div class="project-title-container pt-2" v-if="project.title">
+                  <h6 v-html="project.title">{{ project.title }}</h6>
+                </div>
+                <ul class="mb-0">
+                    <li class="achievement" v-for="achievement in project.achievements">
+                        {{ achievement }}
+                      </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Stack -->
+            <div class="stack" v-if="job.stack">
+                <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</h6>
+            </div>
+            <br />
+          </div>
+        </div>
+      </section>
+    </div>
 
-<body>
-    <iframe style='height: 100%;width: 100%;' src="https://docs.google.com/document/d/e/2PACX-1vSSTLzQY4yieMNKUvlbTfAx4LjFqJAc5b8GrVGcvT8yihERQwuy8Wxcpy2WYRIth9SoOH0f8gI7sNI1/pub?embedded=true"></iframe>
-</body>
-
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            info: {
+              name: "Andrei Efremov",
+              position: "Frontend Developer",
+            },
+            links: [
+              {
+                href: "https://github.com/gazedash",
+                title: "github.com/gazedash",
+                icon: "fab fa-github pe-2",
+              },
+              {
+                href: "mailto:gazedash@gmail.com",
+                title: "gazedash@gmail.com",
+                icon: "fa fa-envelope align-middle pe-2",
+              },
+            ],
+            jobs: [
+              {
+                title: "TINKOFF",
+                duration: "Oct 2021 - present",
+                position: "Senior Developer",
+                city: "Remote",
+                projects: [
+                  {
+                    achievements: [
+                      "Developed features for the main banking application, which involves operations, account management, subscriptions, tariffs, savings accounts and more",
+                      "Delivered numerous successful production releases on regular basis",
+                      "Collaborated with SRE and other teams to make sure that users get the best service possible",
+                      "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
+                      "Improved technical state of the project and its infrastructure by migrating from legacy services",
+                      "Adopted trunk based development to triple delivery speed",
+                    ],
+                  },
+                ],
+                stack: [
+                  "Stack: TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
+                ].join(", "),
+              },
+              {
+                title: "Noveo",
+                duration: "May 2018 - Oct 2021",
+                position: "Frontend Developer",
+                city: "Russia, Saint Petersburg",
+                projects: [
+                  {
+                    title:
+                      "Podcast platform / <b>Stack</b>: TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift",
+                    achievements: [
+                      "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
+                      "Held a key role in development of a cross-platform podcast app",
+                      "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
+                      "Created a framework that makes analytics, push notifications and deep linking work together to improve user retention and achieve 30,000+ MAU",
+                      "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
+                      "Implemented downloads, offline mode and subscription features",
+                      "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
+                    ],
+                  },
+                  {
+                    title:
+                      "Health & Fitness App / <b>Stack</b>: TypeScript, React, React Native, Redux, Fastlane",
+                    achievements: [
+                      "Successfully developed and released an app, delivered numerous updates to the end users",
+                      "Implemented multiple features, such as workouts, chatbot, feed with media content",
+                      "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
+                      "Developed sign up & login flow with support for SMS and push notifications (OTP)",
+                    ],
+                  },
+                  {
+                    title:
+                      "HRMS application / <b>Stack</b>: JavaScript, React, Redux, Formik, SCSS, Flow, Ant",
+                    achievements: [
+                      "Created a core module which enabled swift development and decreased error possibility",
+                      "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
+                      "Developed a performant organization tree chart, backoffice module and discussion system",
+                    ],
+                  },
+                ],
+              },
+              {
+                title: "Yandex",
+                duration: "March 2018 - May 2018",
+                position: "Frontend Developer Intern",
+                city: "Remote",
+                projects: [
+                  {
+                    achievements: [
+                      "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
+                      "Migrated the application from legacy infrastructure and improved app performance",
+                    ],
+                  },
+                ],
+                isIntern: true,
+                stack: [
+                  "TypeScript",
+                  "React",
+                  "Highcharts",
+                  "NodeJS",
+                  "Express",
+                  "PostgreSQL",
+                  "Sequelize",
+                  "Docker",
+                  "YDB",
+                  "Yandex.Cloud",
+                ].join(", "),
+              },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
 </html>
