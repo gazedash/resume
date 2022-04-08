@@ -56,7 +56,7 @@
               <div>
                 <div v-for="link in links" class="">
                   <i :class="link.icon"></i>
-                  <a :href="link.href">
+                  <a class="text-secondary" :href="link.href">
                     <span> {{ link.title }} </span>
                   </a>
                 </div>
@@ -77,13 +77,12 @@
         <div class="">
           <div v-for="job in jobs" class="job">
             <h6>
-              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration }} /
-              {{ job.city }}
+              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration }}<span class="fw-light"> / {{ job.city }}</span>
             </h6>
             <div>
               <div v-for="project in job.projects">
                 <div class="project-title-container pt-2" v-if="project.title">
-                  <h6 v-html="project.title">{{ project.title }}</h6>
+                  <h6>{{ project.title }} <span class="fw-lighter"> / <span class="fw-light">Stack: </span>{{ project.stack }} </span> </h6>
                 </div>
                 <ul class="mb-0">
                     <li class="achievement" v-for="achievement in project.achievements">
@@ -121,10 +120,15 @@
                 title: "gazedash@gmail.com",
                 icon: "fa fa-envelope align-middle pe-2",
               },
+              {
+                href: "https://t.me/gazedash",
+                title: "@gazedash",
+                icon: "fab fa-telegram align-middle pe-2",
+              },
             ],
             jobs: [
               {
-                title: "TINKOFF",
+                title: "Tinkoff Bank",
                 duration: "Oct 2021 - present",
                 position: "Senior Developer",
                 city: "Remote",
@@ -141,7 +145,7 @@
                   },
                 ],
                 stack: [
-                  "Stack: TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
+                  "TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
                 ].join(", "),
               },
               {
@@ -151,8 +155,9 @@
                 city: "Russia, Saint Petersburg",
                 projects: [
                   {
+                      stack: 'TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift',
                     title:
-                      "Podcast platform / <b>Stack</b>: TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift",
+                      "Podcast platform",
                     achievements: [
                       "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
                       "Held a key role in development of a cross-platform podcast app",
@@ -164,8 +169,9 @@
                     ],
                   },
                   {
+                    stack: 'TypeScript, React, React Native, Redux, Fastlane',
                     title:
-                      "Health & Fitness App / <b>Stack</b>: TypeScript, React, React Native, Redux, Fastlane",
+                      "Health & Fitness App",
                     achievements: [
                       "Successfully developed and released an app, delivered numerous updates to the end users",
                       "Implemented multiple features, such as workouts, chatbot, feed with media content",
@@ -174,8 +180,9 @@
                     ],
                   },
                   {
+                            stack: 'JavaScript, React, Redux, Formik, SCSS, Flow, Ant',
                     title:
-                      "HRMS application / <b>Stack</b>: JavaScript, React, Redux, Formik, SCSS, Flow, Ant",
+                      "HRMS application",
                     achievements: [
                       "Created a core module which enabled swift development and decreased error possibility",
                       "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
@@ -188,7 +195,7 @@
                 title: "Yandex",
                 duration: "March 2018 - May 2018",
                 position: "Frontend Developer Intern",
-                city: "Remote",
+                city: "Russia, Moscow",
                 projects: [
                   {
                     achievements: [
