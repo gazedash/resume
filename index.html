@@ -53,15 +53,17 @@
             <div>
               <h1>{{ info.name }}</h1>
               <h3>{{ info.position }}</h3>
+              &nbsp;
             </div>
             <div>
               <!-- links -->
               <div>
                 <div v-for="link in links" class="">
-                  <i :class="link.icon"></i>
+                  <i :class="link.icon" class="align-middle pe-2"></i>
                   <a class="text-secondary" :href="link.href">
                     <span> {{ link.title }} </span>
                   </a>
+                  &nbsp;
                 </div>
                 <div class="pt-3 d-print-none">
                     <button class="btn btn-primary" onclick="window.print()">
@@ -120,18 +122,23 @@
               {
                 href: "https://github.com/gazedash",
                 title: "github.com/gazedash",
-                icon: "fab fa-github pe-2",
+                icon: "fab fa-github",
               },
               {
                 href: "mailto:gazedash@gmail.com",
                 title: "gazedash@gmail.com",
-                icon: "fa fa-envelope align-middle pe-2",
+                icon: "fa fa-envelope",
               },
               {
                 href: "https://t.me/gazedash",
                 title: "@gazedash",
-                icon: "fab fa-telegram align-middle pe-2",
+                icon: "fab fa-telegram",
               },
+              {
+                  href: 'https://www.linkedin.com/in/andrei-efremov-5b4761125',
+                  title: 'LinkedIn',
+                  icon: 'fab fa-linkedin'
+              }
             ],
             jobs: [
               {
