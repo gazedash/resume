@@ -24,7 +24,7 @@
       referrerpolicy="no-referrer"
     />
     <script src="https://unpkg.com/vue@3"></script>
-    <title>Andrei Efremov CV</title>
+    <title>Andrei Efremov Resume</title>
     <style>
         @page { size: auto;  margin: 0mm; }
             /* @media print {
@@ -52,7 +52,7 @@
             <!-- info -->
             <div>
               <h1>{{ info.name }}</h1>
-              <h3>{{ info.position }}</h3>
+              <h3>{{ info.position }} {{ localizedType }}</h3>
               &nbsp;
             </div>
             <div>
@@ -71,6 +71,19 @@
                         Print
                     </button>
                 </div>
+                <div class="pt-3 d-print-none">
+
+                  <div>
+                    <input type="radio" id="resume" name="type" v-model="type" value="resume">
+                    <label class="ms-2" for="resume"> Resume</label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="cv" name="type" v-model="type" value="cv">
+                    <label class="ms-2" for="cv"> CV</label>
+                  </div>
+                  
+              </div>
               </div>
             </div>
           </div>
@@ -80,10 +93,13 @@
         <!-- Work Experience -->
         <h5>Work Experience</h5>
         <div class="">
-          <div v-for="job in jobs" class="job">
+          <div v-for="job in filterExperience" class="job">
             <h6>
               <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration }}<span class="fw-light"> / {{ job.city }}</span>
             </h6>
+            <div v-if="type === 'cv'">
+              {{ job.cvDescription }}
+            </div>
             <div>
               <div v-for="project in job.projects">
                 <div class="project-title-container pt-2" v-if="project.title">
@@ -110,12 +126,40 @@
     </div>
 
     <script>
+      const types = {
+        resume: 'Resume',
+        cv: 'CV',
+      }
+
+      const name = 'Andrei Efremov'
+
+      const documentTitle = (type = 'resume') => {
+        document.title = `${name} ${types[type]}`
+      }
+
       Vue.createApp({
+        mounted() {
+          documentTitle(this.type)
+        },
+        computed: {
+          localizedType() {
+            return types[this.type]
+          },
+          filterExperience() {
+            return this.jobs.filter(job => this.type === 'resume' ? job.type !== 'cv' : true)
+          }
+        },
+        watch: {
+          type: function(type) {
+            documentTitle(type)
+          }
+        },
         data() {
           return {
+            type: 'resume',
             version: `v${Date.now()}`,
             info: {
-              name: "Andrei Efremov",
+              name,
               position: "Frontend Developer",
             },
             links: [
@@ -199,9 +243,10 @@
                     ],
                   },
                   {
-                            stack: 'JavaScript, React, Redux, Formik, SCSS, Flow, Ant',
+                            stack: 'JavaScript, React, Redux, Formik, SCSS, Flow, Ant, Webpack',
                     title:
                       "HRMS application",
+                    // cvDescription: 'My goal at the project was to streamline new feature development, increase delivery speed and decrease error possibility',
                     achievements: [
                       "Created a core module which enabled swift development and decreased error possibility",
                       "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
@@ -215,11 +260,12 @@
                 duration: "March 2018 - May 2018",
                 position: "Frontend Developer Intern",
                 city: "Russia, Moscow",
+                // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
                 projects: [
                   {
                     achievements: [
                       "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
-                      "Migrated the application from legacy infrastructure and improved app performance",
+                      "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
                     ],
                   },
                 ],
@@ -237,6 +283,32 @@
                   "Yandex.Cloud",
                 ].join(", "),
               },
+              {
+                type: 'cv',
+                title: 'Freelance',
+                duration: "March 2017 - March 2018",
+                position: "Junior Frontend Developer",
+                city: "Remote",
+                // cvDescription: 'As a junior frontend developer, I worked on multiple freelance projects, where I was responsible for support, bugfixing and feature development',
+                projects: [
+                  {
+                    achievements: [
+                      'Delivered features for a social survey app, such as social login as well as numerous components and charts',
+                      'Development of screenshot sharing tool desktop client and web interface',
+                      'Support, bug fixing and development of online web chat',
+                    ]
+                  }
+                ],
+                stack: [
+                  'JavaScript',
+                  'React',
+                  'Node.js',
+                  'Express',
+                  'Webpack',
+                  'LESS',
+                  'Bootstrap'
+                ].join(', ')
+              }
             ],
           };
         },
