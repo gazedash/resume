@@ -96,6 +96,18 @@
                     <i class="fa fa-print"></i>
                     Print
                   </button>
+
+                  <div v-if="templates.length">
+                    <label for="cars">Choose a template:</label>
+                    <select v-model="selectedTemplateId">
+                      <option
+                        v-for="template in templates"
+                        :value="template.id"
+                      >
+                        {{template.name}}
+                      </option>
+                    </select>
+                  </div>
                 </div>
                 <div class="pt-3 d-print-none" :class="printEmulateClass">
                   <div>
@@ -190,7 +202,7 @@
       // print
       const usePrint = () => {
         const klass = "d-none";
-        const state = Vue.ref(klass);
+        const state = Vue.ref("");
 
         const emulatePrint = () => {
           state.value = state.value === klass ? "" : klass;
@@ -211,10 +223,28 @@
       // jobs
       const filterJob = (type) => (j) =>
         type === "resume" ? j.type !== "cv" : true;
+
+      const applyTemplate = (selectedTemplate) => (job) => {
+        if (selectedTemplate?.id) {
+          const templateOverrides = job?.templateOverrides || {};
+          const overrides = templateOverrides[selectedTemplate.id] || {};
+
+          return {
+            ...job,
+            ...overrides,
+          };
+        }
+
+        return job;
+      };
       // for test
       // (j, i) => type === "resume" ? i <= 1 : i >= 3;
-      const useJobs = (type) => {
-        return Vue.computed(() => allJobs.filter(filterJob(type.value)));
+      const useJobs = (type, selectedTemplate) => {
+        return Vue.computed(() =>
+          allJobs
+            .filter(filterJob(type.value))
+            .map(applyTemplate(selectedTemplate?.value))
+        );
       };
 
       // type
@@ -239,6 +269,29 @@
           duration: "Oct 2021 - present",
           position: "Senior Frontend Engineer",
           city: "Remote",
+          templateOverrides: {
+            1: {
+              title: "Testiiiiing Ancient Tech",
+              duration: "Oct 2021 BC - present",
+              position: "Senior Wizard",
+              city: "Dalaran",
+              stack: ["YoloScript, Preact"].join(", "),
+
+              projects: [
+                {
+                  achievements: [
+                    "Project 1 Achievment 1 override",
+                    "Achievment 2 override",
+                  ],
+                },
+                {
+                  achievements: ["Project 2 Achievment 1 override"],
+                },
+              ],
+            },
+            2: {},
+            3: {},
+          },
           projects: [
             {
               achievements: [
@@ -383,10 +436,33 @@
         },
       ];
 
+      const useTemplate = () => {
+        const templates = [
+          { name: "default" },
+          { id: 1, name: "Type A" },
+          { id: 2, name: "Type B" },
+          { id: 3, name: "Type C" },
+        ];
+
+        const selectedTemplateId = Vue.ref();
+
+        const selectedTemplate = Vue.computed(() =>
+          templates.find((t) => t.id === selectedTemplateId.value)
+        );
+
+        return {
+          selectedTemplate,
+          selectedTemplateId,
+          templates,
+        };
+      };
+
       function setup() {
         const { localizedType, type } = useType();
         const { printEmulateClass, emulatePrint, print } = usePrint();
-        const jobs = useJobs(type);
+        const { templates, selectedTemplate, selectedTemplateId } =
+          useTemplate();
+        const jobs = useJobs(type, selectedTemplate);
 
         useTitle(localizedType);
 
@@ -399,6 +475,8 @@
           info,
           links,
           version,
+          selectedTemplateId,
+          templates,
         };
       }
 
