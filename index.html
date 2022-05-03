@@ -202,7 +202,7 @@
       // print
       const usePrint = () => {
         const klass = "d-none";
-        const state = Vue.ref("");
+        const state = Vue.ref(klass);
 
         const emulatePrint = () => {
           state.value = state.value === klass ? "" : klass;
