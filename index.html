@@ -4,8 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
     <link
       rel="stylesheet"
@@ -18,32 +27,35 @@
     <title>Andrei Efremov Resume</title>
     <style>
       hr {
-    display: block;
-    height: 1px;
-    background: transparent;
-    width: 100%;
-    border: none;
-    border-top: solid 1px black;
-}
-        @page { size: auto;  margin: 0mm; }
-            /* @media print {
+        display: block;
+        height: 1px;
+        background: transparent;
+        width: 100%;
+        border: none;
+        border-top: solid 1px black;
+      }
+      @page {
+        size: auto;
+        margin: 0mm;
+      }
+      /* @media print {
   .job {page-break-after: always;}
         } */
-        .project-title-container h6 {
-            font-size: 14px;
-        }
-        .achievement {
-            font-size: 14px;
-        }
-        .stack {
-            font-size: 12px;
-        }
-        .hidden-text {
-            font-size: 1px;
-        }
-        .subtext {
-          font-size: 13px;
-        }
+      .project-title-container h6 {
+        font-size: 14px;
+      }
+      .achievement {
+        font-size: 14px;
+      }
+      .stack {
+        font-size: 12px;
+      }
+      .hidden-text {
+        font-size: 1px;
+      }
+      .subtext {
+        font-size: 13px;
+      }
     </style>
   </head>
   <body>
@@ -54,11 +66,11 @@
             <!-- info -->
             <div>
               <h5 class="m-0">
-                <b>
-                  {{ info.name }}
-                </b>
+                <b> {{ info.name }} </b>
               </h5>
-              <div @click="emulatePrint" class="subtext">{{ info.position }} &nbsp;</div>
+              <div @click="emulatePrint" class="subtext">
+                {{ info.position }} &nbsp;
+              </div>
             </div>
             <div>
               <!-- links -->
@@ -73,24 +85,34 @@
                   </div>
                 </div>
                 <div class="pt-3 d-print-none" :class="printEmulateClass">
-                    <button class="btn btn-primary" onclick="window.print()">
-                        <i class="fa fa-print"></i>
-                        Print
-                    </button>
+                  <button class="btn btn-primary" onclick="print()">
+                    <i class="fa fa-print"></i>
+                    Print
+                  </button>
                 </div>
                 <div class="pt-3 d-print-none" :class="printEmulateClass">
-
                   <div>
-                    <input type="radio" id="resume" name="type" v-model="type" value="resume">
+                    <input
+                      type="radio"
+                      id="resume"
+                      name="type"
+                      v-model="type"
+                      value="resume"
+                    />
                     <label class="ms-2" for="resume"> Resume</label>
                   </div>
 
                   <div>
-                    <input type="radio" id="cv" name="type" v-model="type" value="cv">
+                    <input
+                      type="radio"
+                      id="cv"
+                      name="type"
+                      v-model="type"
+                      value="cv"
+                    />
                     <label class="ms-2" for="cv"> CV</label>
                   </div>
-                  
-              </div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,233 +122,280 @@
         <!-- Work Experience -->
         <div class="mb-2">Work Experience</div>
         <div class="">
-          <div v-for="job in filterExperience" class="job">
+          <div v-for="job in jobs" class="job">
             <h6>
-              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration }}<span class="fw-light"> / {{ job.city }}</span>
+              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration
+              }}<span class="fw-light"> / {{ job.city }}</span>
             </h6>
-            <div v-if="type === 'cv'">
-              {{ job.cvDescription }}
-            </div>
+            <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
             <div>
               <div v-for="project in job.projects">
                 <div class="project-title-container pt-2" v-if="project.title">
-                  <h6>{{ project.title }} <span class="fw-lighter"> / <span class="fw-light">Stack: </span>{{ project.stack }} </span> </h6>
+                  <h6>
+                    {{ project.title }}
+                    <span class="fw-lighter">
+                      / <span class="fw-light">Stack: </span>{{ project.stack }}
+                    </span>
+                  </h6>
                 </div>
                 <ul class="mb-1">
-                    <li class="achievement" v-for="achievement in project.achievements">
-                        {{ achievement }}
-                      </li>
+                  <li
+                    class="achievement"
+                    v-for="achievement in project.achievements"
+                  >
+                    {{ achievement }}
+                  </li>
                 </ul>
               </div>
             </div>
             <!-- Stack -->
             <div class="stack" v-if="job.stack">
-                <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</h6>
+              <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</span>
             </div>
             <hr />
           </div>
         </div>
       </section>
       <div>
-        <span class="hidden-text text-light">{{ version }}</h6>
+        <span class="hidden-text text-light">{{ version }}</span>
       </div>
     </div>
 
     <script>
-      const types = {
-        resume: 'Resume',
-        cv: 'CV',
-      }
+      // const
+      const version = `v${Date.now()}`;
 
-      const name = 'Andrei Efremov'
+      const info = {
+        name: "Andrei Efremov",
+        position: "Senior Frontend Engineer",
+      };
 
-      const documentTitle = (type = 'resume') => {
-        document.title = `${name} ${types[type]}`
-      }
+      // document title
+      const documentTitle = (localizedType = "XResume") => {
+        document.title = `${info.name} ${localizedType}`;
+      };
 
-      Vue.createApp({
-        methods: {
-          emulatePrint: function() {
-            this.printEmulateClass = this.printEmulateClass === 'd-none' ? '' : 'd-none';
-          },
-        },
-        mounted() {
-          documentTitle(this.type)
-        },
-        computed: {
-          localizedType() {
-            return types[this.type]
-          },
-          filterExperience() {
-            return this.jobs.filter(job => this.type === 'resume' ? job.type !== 'cv' : true)
-          }
-        },
-        watch: {
-          type: function(type) {
-            documentTitle(type)
-          }
-        },
-        data() {
-          return {
-            printEmulateClass: 'd-none',
-            type: 'resume',
-            version: `v${Date.now()}`,
-            info: {
-              name,
-              position: "Senior Frontend Engineer",
+      const useTitle = (localizedType) => {
+        Vue.onMounted(() => documentTitle(localizedType.value));
+        Vue.watch(() => localizedType.value, documentTitle);
+      };
+
+      // print
+      const usePrint = () => {
+        const klass = "d-none";
+        const state = Vue.ref("");
+
+        const emulatePrint = () => {
+          state.value = state.value === klass ? "" : klass;
+        };
+
+        const print = () => {
+          emulatePrint();
+          window.print();
+        };
+
+        return {
+          printEmulateClass: state,
+          emulatePrint,
+          print,
+        };
+      };
+
+      // jobs
+      const filterJob = (type) => (j) =>
+        type === "resume" ? j.type !== "cv" : true;
+      // for test
+      // (j, i) => type === "resume" ? i <= 1 : i >= 3;
+      const useJobs = (type) => {
+        return Vue.computed(() => allJobs.filter(filterJob(type.value)));
+      };
+
+      // type
+      const useType = () => {
+        const types = {
+          resume: "Resume",
+          cv: "CV",
+        };
+        const type = Vue.ref("resume");
+        const localizedType = Vue.computed(() => types[type.value]);
+
+        return {
+          type,
+          localizedType,
+        };
+      };
+
+      // data
+      const allJobs = [
+        {
+          title: "Tinkoff Bank",
+          duration: "Oct 2021 - present",
+          position: "Senior Frontend Engineer",
+          city: "Remote",
+          projects: [
+            {
+              achievements: [
+                "Developed features for the main banking application, which involves operations, account management, subscriptions, tariffs, savings accounts and more",
+                "Delivered numerous successful production releases on regular basis",
+                "Collaborated with SRE and other teams to make sure that users get the best service possible",
+                "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
+                "Improved technical state of the project and its infrastructure by migrating from legacy services",
+                "Adopted trunk based development to triple delivery speed",
+              ],
             },
-            links: [
-              {
-                href: "https://github.com/gazedash",
-                title: "GitHub",
-                icon: "fab fa-github",
-              },
-              {
-                href: "mailto:gazedash@gmail.com",
-                title: "E-mail",
-                icon: "fa fa-envelope",
-              },
-              {
-                href: "https://t.me/gazedash",
-                title: "Telegram",
-                icon: "fab fa-telegram",
-              },
-              {
-                href: 'wa.me/79952602040',
-                title: 'WhatsApp',
-                icon: 'fab fa-whatsapp',
-              },
-              {
-                  href: 'https://www.linkedin.com/in/gazedash',
-                  title: 'LinkedIn',
-                  icon: 'fab fa-linkedin'
-              }
-            ],
-            jobs: [
-              {
-                title: "Tinkoff Bank",
-                duration: "Oct 2021 - present",
-                position: "Senior Frontend Engineer",
-                city: "Remote",
-                projects: [
-                  {
-                    achievements: [
-                      "Developed features for the main banking application, which involves operations, account management, subscriptions, tariffs, savings accounts and more",
-                      "Delivered numerous successful production releases on regular basis",
-                      "Collaborated with SRE and other teams to make sure that users get the best service possible",
-                      "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
-                      "Improved technical state of the project and its infrastructure by migrating from legacy services",
-                      "Adopted trunk based development to triple delivery speed",
-                    ],
-                  },
-                ],
-                stack: [
-                  "TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
-                ].join(", "),
-              },
-              {
-                title: "Noveo",
-                duration: "May 2018 - Oct 2021",
-                position: "Frontend Developer",
-                city: "Russia, Saint Petersburg",
-                projects: [
-                  {
-                      stack: 'TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift',
-                    title:
-                      "Podcast platform",
-                    achievements: [
-                      "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
-                      "Held a key role in development of a cross-platform podcast app",
-                      "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
-                      "Created a framework that makes analytics, push notifications and deep linking work together to improve user retention and achieve 30,000+ MAU",
-                      "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
-                      "Implemented downloads, offline mode and subscription features",
-                      "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
-                    ],
-                  },
-                  {
-                    stack: 'TypeScript, React, React Native, Redux, Fastlane',
-                    title:
-                      "Health & Fitness App",
-                    achievements: [
-                      "Successfully developed and released an app, delivered numerous updates to the end users",
-                      "Implemented multiple features, such as workouts, chatbot, feed with media content",
-                      "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
-                      "Developed sign up & login flow with support for SMS and push notifications (OTP)",
-                    ],
-                  },
-                  {
-                            stack: 'JavaScript, React, Redux, Formik, SCSS, Flow, Ant, Webpack',
-                    title:
-                      "HRMS application",
-                    // cvDescription: 'My goal at the project was to streamline new feature development, increase delivery speed and decrease error possibility',
-                    achievements: [
-                      "Created a core module which enabled swift development and decreased error possibility",
-                      "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
-                      "Developed a performant organization tree chart, backoffice module and discussion system",
-                    ],
-                  },
-                ],
-              },
-              {
-                title: "Yandex",
-                duration: "March 2018 - May 2018",
-                position: "Frontend Developer Intern",
-                city: "Russia, Moscow",
-                // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
-                projects: [
-                  {
-                    achievements: [
-                      "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
-                      "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
-                    ],
-                  },
-                ],
-                isIntern: true,
-                stack: [
-                  "TypeScript",
-                  "React",
-                  "Highcharts",
-                  "NodeJS",
-                  "Express",
-                  "PostgreSQL",
-                  "Sequelize",
-                  "Docker",
-                  "YDB",
-                  "Yandex.Cloud",
-                ].join(", "),
-              },
-              {
-                type: 'cv',
-                title: 'Freelance',
-                duration: "March 2017 - March 2018",
-                position: "Junior Frontend Developer",
-                city: "Remote",
-                // cvDescription: 'As a junior frontend developer, I worked on multiple freelance projects, where I was responsible for support, bugfixing and feature development',
-                projects: [
-                  {
-                    achievements: [
-                      'Delivered a cross-platform travel app with offline maps support from scratch',
-                      'Developed features for a social survey app, such as social login as well as numerous components and charts',
-                      'Development of screenshot sharing tool desktop client and web interface',
-                      'Support, bug fixing and development of online web chat',
-                    ]
-                  }
-                ],
-                stack: [
-                  'JavaScript',
-                  'React',
-                  'Node.js',
-                  'Express',
-                  'Webpack',
-                  'LESS',
-                  'Bootstrap'
-                ].join(', ')
-              }
-            ],
-          };
+          ],
+          stack: [
+            "TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
+          ].join(", "),
         },
-      }).mount("#app");
+        {
+          title: "Noveo",
+          duration: "May 2018 - Oct 2021",
+          position: "Frontend Developer",
+          city: "Russia, Saint Petersburg",
+          projects: [
+            {
+              stack:
+                "TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift",
+              title: "Podcast platform",
+              achievements: [
+                "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
+                "Held a key role in development of a cross-platform podcast app",
+                "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
+                "Created a framework that makes analytics, push notifications and deep linking work together to improve user retention and achieve 30,000+ MAU",
+                "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
+                "Implemented downloads, offline mode and subscription features",
+                "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
+              ],
+            },
+            {
+              stack: "TypeScript, React, React Native, Redux, Fastlane",
+              title: "Health & Fitness App",
+              achievements: [
+                "Successfully developed and released an app, delivered numerous updates to the end users",
+                "Implemented multiple features, such as workouts, chatbot, feed with media content",
+                "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
+                "Developed sign up & login flow with support for SMS and push notifications (OTP)",
+              ],
+            },
+            {
+              stack:
+                "JavaScript, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
+              title: "HRMS application",
+              // cvDescription: 'My goal at the project was to streamline new feature development, increase delivery speed and decrease error possibility',
+              achievements: [
+                "Created a core module which enabled swift development and decreased error possibility",
+                "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
+                "Developed a performant organization tree chart, backoffice module and discussion system",
+              ],
+            },
+          ],
+        },
+        {
+          title: "Yandex",
+          duration: "March 2018 - May 2018",
+          position: "Frontend Developer Intern",
+          city: "Russia, Moscow",
+          // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
+          projects: [
+            {
+              achievements: [
+                "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
+                "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
+              ],
+            },
+          ],
+          isIntern: true,
+          stack: [
+            "TypeScript",
+            "React",
+            "Highcharts",
+            "NodeJS",
+            "Express",
+            "PostgreSQL",
+            "Sequelize",
+            "Docker",
+            "YDB",
+            "Yandex.Cloud",
+          ].join(", "),
+        },
+        {
+          type: "cv",
+          title: "Freelance",
+          duration: "March 2017 - March 2018",
+          position: "Junior Frontend Developer",
+          city: "Remote",
+          // cvDescription: 'As a junior frontend developer, I worked on multiple freelance projects, where I was responsible for support, bugfixing and feature development',
+          projects: [
+            {
+              achievements: [
+                "Delivered a cross-platform travel app with offline maps support from scratch",
+                "Developed features for a social survey app, such as social login as well as numerous components and charts",
+                "Development of screenshot sharing tool desktop client and web interface",
+                "Support, bug fixing and development of online web chat",
+              ],
+            },
+          ],
+          stack: [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Express",
+            "Webpack",
+            "LESS",
+            "Bootstrap",
+          ].join(", "),
+        },
+      ];
+
+      const links = [
+        {
+          href: "https://github.com/gazedash",
+          title: "GitHub",
+          icon: "fab fa-github",
+        },
+        {
+          href: "mailto:gazedash@gmail.com",
+          title: "E-mail",
+          icon: "fa fa-envelope",
+        },
+        {
+          href: "https://t.me/gazedash",
+          title: "Telegram",
+          icon: "fab fa-telegram",
+        },
+        {
+          href: "wa.me/79952602040",
+          title: "WhatsApp",
+          icon: "fab fa-whatsapp",
+        },
+        {
+          href: "https://www.linkedin.com/in/gazedash",
+          title: "LinkedIn",
+          icon: "fab fa-linkedin",
+        },
+      ];
+
+      function setup() {
+        const { localizedType, type } = useType();
+        const { printEmulateClass, emulatePrint, print } = usePrint();
+        const jobs = useJobs(type);
+
+        useTitle(localizedType);
+
+        return {
+          type,
+          printEmulateClass,
+          emulatePrint,
+          print,
+          jobs,
+          info,
+          links,
+          version,
+        };
+      }
+
+      Vue.createApp({ setup }).mount("#app");
     </script>
   </body>
 </html>
