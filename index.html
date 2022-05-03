@@ -76,10 +76,17 @@
               <!-- links -->
               <div>
                 <div class="w-100 d-flex flex-row">
-                  <div v-for="link in links" class="">
-                    <i :class="link.icon" class="align-middle pe-2"></i>
+                  <div v-for="link in links">
                     <a class="text-secondary" :href="link.href">
-                      <span class="subtext"> {{ link.title }} </span>
+                      <i
+                        :class="link.icon"
+                        class="text-black align-middle pe-2"
+                      ></i>
+                      <span
+                        class="subtext text-black d-none d-sm-inline d-print-inline"
+                      >
+                        {{ link.title }}
+                      </span>
                     </a>
                     &nbsp;
                   </div>
@@ -121,7 +128,7 @@
       <section class="m-4">
         <!-- Work Experience -->
         <div class="mb-2">Work Experience</div>
-        <div class="">
+        <div>
           <div v-for="job in jobs" class="job">
             <h6>
               <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration
@@ -365,7 +372,7 @@
           icon: "fab fa-telegram",
         },
         {
-          href: "wa.me/79952602040",
+          href: "https://wa.me/79952602040",
           title: "WhatsApp",
           icon: "fab fa-whatsapp",
         },
