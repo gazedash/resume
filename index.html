@@ -75,7 +75,9 @@
             <div>
               <!-- links -->
               <div>
-                <div class="w-100 d-flex flex-row">
+                <div class="subtext w-100 d-flex flex-row">
+                  <b class="d-none d-md-inline">Links </b>
+                  <span class="ms-1"> </span>
                   <div v-for="link in links">
                     <a class="text-secondary" :href="link.href">
                       <i
@@ -83,13 +85,17 @@
                         class="text-black align-middle pe-2"
                       ></i>
                       <span
-                        class="subtext text-black d-none d-sm-inline d-print-inline"
+                        class="subtext text-black d-none d-md-inline d-print-inline"
                       >
                         {{ link.title }}
                       </span>
                     </a>
                     &nbsp;
                   </div>
+                </div>
+                <div class="d-none d-md-block subtext">
+                  <b>Key Skills </b>JavaScript, TypeScript, React, Redux,
+                  Node.js, Express, Docker
                 </div>
                 <div class="pt-3 d-print-none" :class="printEmulateClass">
                   <button class="btn btn-primary" onclick="print()">
@@ -136,6 +142,12 @@
             </div>
           </div>
         </header>
+      </section>
+      <section class="m-4">
+        <div class="d-block d-md-none subtext">
+          <b>Key Skills </b>JavaScript, TypeScript, React, Redux, Node.js,
+          Express, Docker
+        </div>
       </section>
       <section class="m-4">
         <!-- Work Experience -->
