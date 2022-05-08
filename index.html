@@ -74,6 +74,12 @@
               <div @click="emulatePrint" class="subtext">
                 {{ info.position }} &nbsp;
               </div>
+              <div class="d-print-none">
+                <br />
+                 <a href="https://raw.githubusercontent.com/gazedash/resume/master/resume.pdf">
+                  {{localizedType}} in PDF
+                </a>
+              </div>
             </div>
             <div>
               <!-- links -->
@@ -482,6 +488,7 @@
         useTitle(localizedType);
 
         return {
+          localizedType,
           type,
           printEmulateClass,
           emulatePrint,
