@@ -119,6 +119,9 @@
                                     <input type="radio" id="cv" name="type" v-model="type" value="cv" />
                                     <label class="ms-2" for="cv"> CV</label>
                                 </div>
+                                <!-- <div>
+                                    <button @click="switchLang()">Switch Lang {{ lang }}</button>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -389,6 +392,10 @@
         const skills = "JS, TS, React, Node, Fastify, Docker, Tailwind"
         const skills2 = "Vue3, SvelteKit, Solid.JS, Vite, Go, Java, Next.js, Python"
 
+        // const lang = window.location.search.split('?lang=')[1] || 'en'
+        // const langs = {en: 'ru',ru: 'en'}
+        // const switchLang = () => window.location.search = '?lang=' + langs[lang]
+
         function setup() {
             const { localizedType, type } = useType();
             const { printEmulateClass, emulatePrint, print } = usePrint();
@@ -407,7 +414,9 @@
                 links,
                 version,
                 skills,
-                skills2
+                skills2,
+                // lang,
+                // switchLang
             };
         }
 
