@@ -139,8 +139,8 @@
             <div>
                 <div v-for="job in jobs" class="job">
                     <h6>
-                        <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration
-                        }}<span class="fw-light"> / {{ job.city }}</span>
+                        <b>{{ job.title }}</b>  {{ job.position }} {{ job.duration
+                        }} <span class="fw-light"> {{ job.city }}</span>
                     </h6>
                     <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
                     <div>
@@ -149,7 +149,7 @@
                                 <h6>
                                     {{ project.title }}
                                     <span class="fw-lighter">
-                                        / <span class="fw-light"></span>{{ project.stack }}
+                                        | <span class="fw-light"></span>{{ project.stack }}
                                     </span>
                                 </h6>
                             </div>
@@ -298,7 +298,7 @@
                     {
                         stack:
                             "JS, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
-                        title: "HRMS app",
+                        title: "HRMS Service",
                         achievements: [
                             "Created a core module which enabled swift development and decreased error possibility",
                             "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
