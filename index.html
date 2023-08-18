@@ -76,7 +76,7 @@
                         </div>
                         <div class="d-print-none">
                             <br />
-                            <a href="https://raw.githubusercontent.com/gazedash/resume/master/resume.pdf">
+                            <a :href="directUrl">
                                 {{localizedType}} in PDF
                             </a>
                         </div>
@@ -111,17 +111,12 @@
                             </div>
                             <div class="pt-3 d-print-none" :class="printEmulateClass">
                                 <div>
-                                    <input type="radio" id="resume" name="type" v-model="type" value="resume" />
-                                    <label class="ms-2" for="resume"> Resume</label>
+                                    <button @click="switchType()">Switch Type to {{ types[type] }}</button>
                                 </div>
 
                                 <div>
-                                    <input type="radio" id="cv" name="type" v-model="type" value="cv" />
-                                    <label class="ms-2" for="cv"> CV</label>
+                                    <button @click="switchLang()">Switch Lang to {{ langs[lang] }}</button>
                                 </div>
-                                <!-- <div>
-                                    <button @click="switchLang()">Switch Lang {{ lang }}</button>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -142,7 +137,7 @@
             <div>
                 <div v-for="job in jobs" class="job">
                     <h6>
-                        <b>{{ job.title }}</b>  {{ job.position }} {{ job.duration
+                        <b>{{ job.title }}</b> {{ job.position }} {{ job.duration
                         }} <span class="fw-light"> {{ job.city }}</span>
                     </h6>
                     <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
@@ -157,7 +152,7 @@
                                 </h6>
                             </div>
                             <ul class="mb-1">
-                                <li class="achievement" v-for="achievement in project.achievements">
+                                <li class="achievement" v-for="achievement in project[trans(fields.achievements.name)]">
                                     {{ achievement }}
                                 </li>
                             </ul>
@@ -186,7 +181,7 @@
         };
 
         // document title
-        const documentTitle = (localizedType = "XResume") => {
+        const documentTitle = (localizedType = "Resume.") => {
             document.title = `${info.name} ${localizedType}`;
         };
 
@@ -216,32 +211,11 @@
             };
         };
 
-        // jobs
         const filterJob = (type) => (j) =>
             type === "resume" ? j.type !== "cv" : true;
 
-        // for test
-        // (j, i) => type === "resume" ? i <= 1 : i >= 3;
         const useJobs = (type) => {
-            return Vue.computed(() =>
-                allJobs
-                    .filter(filterJob(type.value))
-            );
-        };
-
-        // type
-        const useType = () => {
-            const types = {
-                resume: "Resume",
-                cv: "CV",
-            };
-            const type = Vue.ref("resume");
-            const localizedType = Vue.computed(() => types[type.value]);
-
-            return {
-                type,
-                localizedType,
-            };
+            return Vue.computed(() =>allJobs.filter(filterJob(type.value)));
         };
 
         // data
@@ -262,6 +236,15 @@
                             "Improved technical state of the project and its infrastructure by migrating from legacy services",
                             "Created specifications and epics from business descriptions, eliminated unknown factors"
                         ],
+                        achievements_ru: [
+                            "Добавил технические метрики, дашборды и алерты, которые поймали дюжину инцидентов за секунды до их возникновения",
+                            "Разработка различного функционала банковского приложения",
+                            "Поставка большого количества успешных релизов на бой на регулярной основе",
+                            "Сотрудничество с SRE и другими командами для достижения наилучшего пользовательского опыта",
+                            "Обслуживание, поддержка, мониторинг и обновление боевой инфраструктуры более чем 10 микросервисов, бэкендов и приложений",
+                            "Улучшил техническое состояние проект и его инфраструктуры за счет миграции с легаси сервисов",
+                            "Создание спецификации и эпиков по бизнесовым описаниям функционала, выяснение неизвестных и факторов риска"
+                        ]
                     },
                 ],
                 stack: [
@@ -287,6 +270,15 @@
                             "Implemented downloads, offline mode and subscription features",
                             "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
                         ],
+                        achievements_ru: [
+                            "Возглавил и управлял командой из 6 разработчиков, чтобы майлстоуны проекта были выполнены вовремя",
+                            "Выполнял главную роль в разработке кроссплатформенного приложения подкастов",
+                            "Сотрудничество с владельцем продукта и дизайнерами для достижения +20% успешных UX исследований",
+                            "Интегрировал аналитику, пуши и глубокие ссылки чтобы достичь удержания пользователей и достичь 30,000+ MAU",
+                            "Создал и интегрировал библиотеку плеера, которая удовлетворяла требованиям к плавному воспроизведению и поддерживала различные форматы аудио",
+                            "Разработал функционал скачивания, оффлайн режим и подписок",
+                            "Создал план собеседования и провел 50+ собеседований, для найма новых разработчиков в компанию"
+                        ]
                     },
                     {
                         stack: "TS, React, React Native, Redux, Fastlane",
@@ -297,6 +289,11 @@
                             "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
                             "Developed sign up & login flow with support for SMS and push notifications (OTP)",
                         ],
+                        achievements_ru: [
+                            "Успешно разработал и выпустил приложение, а также множество обновлений для конечных пользователей",
+                            "Разработал множество фич, такие как упражнения, чатбот, новостная лента с медиа контентом",
+                            "Разработал флоу регистрации и логина с поддержкой входа по СМС и пуш кодам"
+                        ]
                     },
                     {
                         stack:
@@ -307,6 +304,11 @@
                             "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
                             "Developed a performant organization tree chart, backoffice module and discussion system",
                         ],
+                        achievements_ru: [
+                            "Создал основной модуль, который позволил ускорить дальнейшую разработку и уменьшил потенциальное количество ошибок",
+                            "Разработал функционал процесса найма от начала и до конца (генерация документов, выплаты и тд)",
+                            "Рарзработал производительный компонент дерева орг структуры, админку и систему обсуждений"
+                        ]
                     },
                 ],
             },
@@ -315,13 +317,16 @@
                 duration: "'18",
                 position: "Intern",
                 city: "Russia, Moscow",
-                // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
                 projects: [
                     {
                         achievements: [
                             "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
                             "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
                         ],
+                        achievements_ru: [
+                            "Рарзработка мажорного обновления приложения визуализации данных, с целью улучшения пользовательского опыта и упрощения выполнения задач",
+                            "Мигрировал приложение с легаси инфры, засетапил CI и улучшил производительность приложения"
+                        ]
                     },
                 ],
                 isIntern: true,
@@ -352,6 +357,12 @@
                             "Development of screenshot sharing tool desktop client and web interface",
                             "Support, bug fixing and development of online web chat",
                         ],
+                        achievements_ru: [
+                            "Разработал кроссплатформенное приложение для путешественников с поддержкой оффлайн карт с нуля",
+                            "Разработка функционала в приложении соцопросов, логин через соцсети, UI компоненты и графики",
+                            "Разработка десктопного приложения шейринга скриншотов и веб интерфейса",
+                            "Поддержка, багфикс и разработка онлайн веб чата",
+                        ]
                     },
                 ],
                 stack: [
@@ -392,14 +403,56 @@
         const skills = "JS, TS, React, Node, Fastify, Docker, Tailwind"
         const skills2 = "Vue3, SvelteKit, Solid.JS, Vite, Go, Java, Next.js, Python"
 
-        // const lang = window.location.search.split('?lang=')[1] || 'en'
-        // const langs = {en: 'ru',ru: 'en'}
-        // const switchLang = () => window.location.search = '?lang=' + langs[lang]
+        const query = new URLSearchParams(window.location.search)
+
+        console.log(query)
+
+        const lang = query.get('lang') || 'en'
+        const langs = { en: 'ru', ru: 'en' }
+        const type = query.get('type') || 'resume'
+        const types = { resume: 'cv', cv: 'resume' }
+
+        const fields = {
+            achievements: {
+                name: 'achievements',
+                ru: 'achievements_ru',
+                en: 'achievements'
+            },
+            workExp: {
+                name: 'workExp',
+                ru: 'Опыт работы',
+                en: 'Work Experience'
+            },
+            keySkills: {
+                name: 'keySkills',
+                ru: 'Ключевые навыки',
+                en: 'Key Skills',
+            }
+        }
+
+        const trans = (key) => fields[key][lang]
+
+        const switchLang = () => window.location.search = new URLSearchParams({
+            lang: langs[lang],
+            type
+        })
+
+        const switchType = () => window.location.search = new URLSearchParams({
+            lang,
+            type: types[type]
+        })
+
+        const localizedTypes = {
+            resume: "Resume",
+            cv: "CV",
+        };
+
+        const localizedType = Vue.computed(() => localizedTypes[type]);
 
         function setup() {
-            const { localizedType, type } = useType();
             const { printEmulateClass, emulatePrint, print } = usePrint();
-            const jobs = useJobs(type);
+            console.log(type)
+            const jobs = useJobs(Vue.toRef(type));
 
             useTitle(localizedType);
 
@@ -415,8 +468,14 @@
                 version,
                 skills,
                 skills2,
-                // lang,
-                // switchLang
+                lang,
+                switchLang,
+                switchType,
+                trans,
+                fields,
+                langs,
+                types,
+                directUrl: `https://raw.githubusercontent.com/gazedash/resume/master/${type}_${lang}.pdf` 
             };
         }
 
