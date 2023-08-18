@@ -1,509 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/vue@3"></script>
     <title>Andrei Efremov Resume</title>
     <style>
-      hr {
-        display: block;
-        height: 1px;
-        background: transparent;
-        width: 100%;
-        border: none;
-        border-top: solid 1px black;
-      }
-      @page {
-        size: auto;
-        margin: 0mm;
-      }
-      /* @media print {
+        hr {
+            display: block;
+            height: 1px;
+            background: transparent;
+            width: 100%;
+            border: none;
+            border-top: solid 1px black;
+        }
+
+        @page {
+            size: auto;
+            margin: 0mm;
+        }
+
+        /* @media print {
   .job {page-break-after: always;}
         } */
-      .project-title-container h6 {
-        font-size: 14px;
-      }
-      .achievement {
-        font-size: 14px;
-        padding-bottom: 2px;
-      }
-      .stack {
-        font-size: 12px;
-      }
-      .hidden-text {
-        font-size: 1px;
-      }
-      .subtext {
-        font-size: 13px;
-      }
-      .highlight {
-        border-bottom: 1px solid red;
-      }
+        .project-title-container h6 {
+            font-size: 14px;
+        }
+
+        .achievement {
+            font-size: 14px;
+            padding-bottom: 2px;
+        }
+
+        .stack {
+            font-size: 12px;
+        }
+
+        .hidden-text {
+            font-size: 1px;
+        }
+
+        .subtext {
+            font-size: 13px;
+        }
+
+        .highlight {
+            border-bottom: 1px solid red;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app">
-      <section class="m-4">
-        <header>
-          <div class="d-flex justify-content-between">
-            <!-- info -->
-            <div>
-              <h5 class="m-0">
-                <b> {{ info.name }} </b>
-              </h5>
-              <div @click="emulatePrint" class="subtext">
-                {{ info.position }} &nbsp;
-              </div>
-              <div class="d-print-none">
-                <br />
-                 <a href="https://raw.githubusercontent.com/gazedash/resume/master/resume.pdf">
-                  {{localizedType}} in PDF
-                </a>
-              </div>
-            </div>
-            <div>
-              <!-- links -->
-              <div>
-                <div class="subtext w-100 d-flex flex-row">
-                  <b class="d-none d-md-inline">Links </b>
-                  <span class="ms-1"> </span>
-                  <div v-for="link in links">
-                    <a class="text-secondary" :href="link.href">
-                      <i
-                        :class="link.icon"
-                        class="text-black align-middle pe-2"
-                      ></i>
-                      <span
-                        class="subtext text-black d-none d-md-inline d-print-inline"
-                      >
-                        {{ link.title }}
-                      </span>
-                    </a>
-                    &nbsp;
-                  </div>
-                </div>
-                <div class="d-none d-md-block subtext">
-                  <b class="highlight">Key Skills</b> JavaScript, TypeScript, React, Redux,
-                  Node.js, Express, Docker
-                </div>
-                <div class="pt-3 d-print-none" :class="printEmulateClass">
-                  <button class="btn btn-primary" onclick="print()">
-                    <i class="fa fa-print"></i>
-                    Print
-                  </button>
+        <section class="m-4">
+            <header>
+                <div class="d-flex justify-content-between">
+                    <!-- info -->
+                    <div>
+                        <h5 class="m-0">
+                            <b> {{ info.name }} </b>
+                        </h5>
+                        <div @click="emulatePrint" class="subtext">
+                            {{ info.position }} &nbsp;
+                        </div>
+                        <div class="d-print-none">
+                            <br />
+                            <a href="https://raw.githubusercontent.com/gazedash/resume/master/resume.pdf">
+                                {{localizedType}} in PDF
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- links -->
+                        <div>
+                            <div class="subtext w-100 d-flex flex-row">
+                                <b class="d-none d-md-inline">Links </b>
+                                <span class="ms-1"> </span>
+                                <div v-for="link in links">
+                                    <a class="text-secondary" :href="link.href">
+                                        <i :class="link.icon" class="text-black align-middle pe-2"></i>
+                                        <span class="subtext text-black d-none d-md-inline d-print-inline">
+                                            {{ link.title }}
+                                        </span>
+                                    </a>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="d-none d-md-block subtext">
+                                <b class="highlight">Key Skills</b> {{skills}}
+                            </div>
+                            <div class="d-none d-md-block subtext">
+                                <b class="fw-semibold">Additional Skills</b> {{skills2}}
+                            </div>
+                            <div class="pt-3 d-print-none" :class="printEmulateClass">
+                                <button class="btn btn-primary" onclick="print()">
+                                    <i class="fa fa-print"></i>
+                                    Print
+                                </button>
+                            </div>
+                            <div class="pt-3 d-print-none" :class="printEmulateClass">
+                                <div>
+                                    <input type="radio" id="resume" name="type" v-model="type" value="resume" />
+                                    <label class="ms-2" for="resume"> Resume</label>
+                                </div>
 
-                  <div v-if="templates.length">
-                    <label for="cars">Choose a template:</label>
-                    <select v-model="selectedTemplateId">
-                      <option
-                        v-for="template in templates"
-                        :value="template.id"
-                      >
-                        {{template.name}}
-                      </option>
-                    </select>
-                  </div>
+                                <div>
+                                    <input type="radio" id="cv" name="type" v-model="type" value="cv" />
+                                    <label class="ms-2" for="cv"> CV</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="pt-3 d-print-none" :class="printEmulateClass">
-                  <div>
-                    <input
-                      type="radio"
-                      id="resume"
-                      name="type"
-                      v-model="type"
-                      value="resume"
-                    />
-                    <label class="ms-2" for="resume"> Resume</label>
-                  </div>
-
-                  <div>
-                    <input
-                      type="radio"
-                      id="cv"
-                      name="type"
-                      v-model="type"
-                      value="cv"
-                    />
-                    <label class="ms-2" for="cv"> CV</label>
-                  </div>
-                </div>
-              </div>
+            </header>
+        </section>
+        <section class="m-4">
+            <div class="d-block d-md-none subtext">
+                <b class="highlight">Key Skills</b> {{skills}}
             </div>
-          </div>
-        </header>
-      </section>
-      <section class="m-4">
-        <div class="d-block d-md-none subtext">
-          <b class="highlight">Key Skills</b> JavaScript, TypeScript, React, Redux, Node.js,
-          Express, Docker
-        </div>
-      </section>
-      <section class="m-4">
-        <!-- Work Experience -->
-        <div class="mb-2">Work Experience</div>
+            <div class="d-block d-md-none subtext">
+                <b class="fw-semibold">Additional Skills</b> {{skills2}}
+            </div>
+        </section>
+        <section class="m-4">
+            <!-- Work Experience -->
+            <div class="mb-2">Work Experience</div>
+            <div>
+                <div v-for="job in jobs" class="job">
+                    <h6>
+                        <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration
+                        }}<span class="fw-light"> / {{ job.city }}</span>
+                    </h6>
+                    <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
+                    <div>
+                        <div v-for="project in job.projects">
+                            <div class="project-title-container pt-2" v-if="project.title">
+                                <h6>
+                                    {{ project.title }}
+                                    <span class="fw-lighter">
+                                        / <span class="fw-light"></span>{{ project.stack }}
+                                    </span>
+                                </h6>
+                            </div>
+                            <ul class="mb-1">
+                                <li class="achievement" v-for="achievement in project.achievements">
+                                    {{ achievement }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Stack -->
+                    <div class="stack" v-if="job.stack">
+                        <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</span>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </section>
         <div>
-          <div v-for="job in jobs" class="job">
-            <h6>
-              <b>{{ job.title }}</b> / {{ job.position }} / {{ job.duration
-              }}<span class="fw-light"> / {{ job.city }}</span>
-            </h6>
-            <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
-            <div>
-              <div v-for="project in job.projects">
-                <div class="project-title-container pt-2" v-if="project.title">
-                  <h6>
-                    {{ project.title }}
-                    <span class="fw-lighter">
-                      / <span class="fw-light">Stack: </span>{{ project.stack }}
-                    </span>
-                  </h6>
-                </div>
-                <ul class="mb-1">
-                  <li
-                    class="achievement"
-                    v-for="achievement in project.achievements"
-                  >
-                    {{ achievement }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- Stack -->
-            <div class="stack" v-if="job.stack">
-              <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</span>
-            </div>
-            <hr />
-          </div>
+            <span class="hidden-text d-none text-light">{{ version }}</span>
         </div>
-      </section>
-      <div>
-        <span class="hidden-text text-light">{{ version }}</span>
-      </div>
     </div>
 
     <script>
-      // const
-      const version = `v${Date.now()}`;
+        // const
+        const version = `v${Date.now()}`;
 
-      const info = {
-        name: "Andrei Efremov",
-        position: "Senior Frontend Engineer",
-      };
-
-      // document title
-      const documentTitle = (localizedType = "XResume") => {
-        document.title = `${info.name} ${localizedType}`;
-      };
-
-      const useTitle = (localizedType) => {
-        Vue.onMounted(() => documentTitle(localizedType.value));
-        Vue.watch(() => localizedType.value, documentTitle);
-      };
-
-      // print
-      const usePrint = () => {
-        const klass = "d-none";
-        const state = Vue.ref(klass);
-
-        const emulatePrint = () => {
-          state.value = state.value === klass ? "" : klass;
+        const info = {
+            name: "Andrei Efremov",
+            position: "Senior Frontend Engineer",
         };
 
-        const print = () => {
-          emulatePrint();
-          window.print();
+        // document title
+        const documentTitle = (localizedType = "XResume") => {
+            document.title = `${info.name} ${localizedType}`;
         };
 
-        return {
-          printEmulateClass: state,
-          emulatePrint,
-          print,
+        const useTitle = (localizedType) => {
+            Vue.onMounted(() => documentTitle(localizedType.value));
+            Vue.watch(() => localizedType.value, documentTitle);
         };
-      };
 
-      // jobs
-      const filterJob = (type) => (j) =>
-        type === "resume" ? j.type !== "cv" : true;
+        // print
+        const usePrint = () => {
+            const klass = "d-none";
+            const state = Vue.ref(klass);
 
-      const applyTemplate = (selectedTemplate) => (job) => {
-        if (selectedTemplate?.id) {
-          const templateOverrides = job?.templateOverrides || {};
-          const overrides = templateOverrides[selectedTemplate.id] || {};
+            const emulatePrint = () => {
+                state.value = state.value === klass ? "" : klass;
+            };
 
-          return {
-            ...job,
-            ...overrides,
-          };
-        }
+            const print = () => {
+                emulatePrint();
+                window.print();
+            };
 
-        return job;
-      };
-      // for test
-      // (j, i) => type === "resume" ? i <= 1 : i >= 3;
-      const useJobs = (type, selectedTemplate) => {
-        return Vue.computed(() =>
-          allJobs
-            .filter(filterJob(type.value))
-            .map(applyTemplate(selectedTemplate?.value))
-        );
-      };
-
-      // type
-      const useType = () => {
-        const types = {
-          resume: "Resume",
-          cv: "CV",
+            return {
+                printEmulateClass: state,
+                emulatePrint,
+                print,
+            };
         };
-        const type = Vue.ref("resume");
-        const localizedType = Vue.computed(() => types[type.value]);
 
-        return {
-          type,
-          localizedType,
+        // jobs
+        const filterJob = (type) => (j) =>
+            type === "resume" ? j.type !== "cv" : true;
+
+        // for test
+        // (j, i) => type === "resume" ? i <= 1 : i >= 3;
+        const useJobs = (type) => {
+            return Vue.computed(() =>
+                allJobs
+                    .filter(filterJob(type.value))
+            );
         };
-      };
 
-      // data
-      const allJobs = [
-        {
-          title: "Tinkoff Bank",
-          duration: "Oct 2021 - present",
-          position: "Senior Frontend Engineer",
-          city: "Remote",
-          templateOverrides: {
-            1: {
-              title: "Testiiiiing Ancient Tech",
-              duration: "Oct 2021 BC - present",
-              position: "Senior Wizard",
-              city: "Dalaran",
-              stack: ["YoloScript, Preact"].join(", "),
+        // type
+        const useType = () => {
+            const types = {
+                resume: "Resume",
+                cv: "CV",
+            };
+            const type = Vue.ref("resume");
+            const localizedType = Vue.computed(() => types[type.value]);
 
-              projects: [
-                {
-                  achievements: [
-                    "Project 1 Achievment 1 override",
-                    "Achievment 2 override",
-                  ],
-                },
-                {
-                  achievements: ["Project 2 Achievment 1 override"],
-                },
-              ],
-            },
-            2: {},
-            3: {},
-          },
-          projects: [
-            {
-              achievements: [
-                "Developed features for the main banking application, which involves operations, account management, subscriptions, tariffs, savings accounts and more",
-                "Delivered numerous successful production releases on regular basis",
-                "Collaborated with SRE and other teams to make sure that users get the best service possible",
-                "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
-                "Improved technical state of the project and its infrastructure by migrating from legacy services",
-                "Adopted trunk based development to triple delivery speed",
-              ],
-            },
-          ],
-          stack: [
-            "TypeScript, NodeJS, Express, React, Tramvai, SSR, Redux, Gitlab CI, Docker, K8s, Jest, WDIO, Grafana, DI, Sentry",
-          ].join(", "),
-        },
-        {
-          title: "Noveo",
-          duration: "May 2018 - Oct 2021",
-          position: "Frontend Developer",
-          city: "Russia, Saint Petersburg",
-          projects: [
-            {
-              stack:
-                "TypeScript, React Native, Redux, Fastlane, Firebase, Java, Swift",
-              title: "Podcast platform",
-              achievements: [
-                "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
-                "Held a key role in development of a cross-platform podcast app",
-                "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
-                "Created a framework that makes analytics, push notifications and deep linking work together to improve user retention and achieve 30,000+ MAU",
-                "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
-                "Implemented downloads, offline mode and subscription features",
-                "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
-              ],
-            },
-            {
-              stack: "TypeScript, React, React Native, Redux, Fastlane",
-              title: "Health & Fitness App",
-              achievements: [
-                "Successfully developed and released an app, delivered numerous updates to the end users",
-                "Implemented multiple features, such as workouts, chatbot, feed with media content",
-                "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
-                "Developed sign up & login flow with support for SMS and push notifications (OTP)",
-              ],
-            },
-            {
-              stack:
-                "JavaScript, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
-              title: "HRMS application",
-              // cvDescription: 'My goal at the project was to streamline new feature development, increase delivery speed and decrease error possibility',
-              achievements: [
-                "Created a core module which enabled swift development and decreased error possibility",
-                "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
-                "Developed a performant organization tree chart, backoffice module and discussion system",
-              ],
-            },
-          ],
-        },
-        {
-          title: "Yandex",
-          duration: "March 2018 - May 2018",
-          position: "Frontend Developer Intern",
-          city: "Russia, Moscow",
-          // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
-          projects: [
-            {
-              achievements: [
-                "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
-                "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
-              ],
-            },
-          ],
-          isIntern: true,
-          stack: [
-            "TypeScript",
-            "React",
-            "Highcharts",
-            "NodeJS",
-            "Express",
-            "PostgreSQL",
-            "Sequelize",
-            "Docker",
-            "YDB",
-            "Yandex.Cloud",
-          ].join(", "),
-        },
-        {
-          type: "cv",
-          title: "Freelance",
-          duration: "March 2017 - March 2018",
-          position: "Junior Frontend Developer",
-          city: "Remote",
-          // cvDescription: 'As a junior frontend developer, I worked on multiple freelance projects, where I was responsible for support, bugfixing and feature development',
-          projects: [
-            {
-              achievements: [
-                "Delivered a cross-platform travel app with offline maps support from scratch",
-                "Developed features for a social survey app, such as social login as well as numerous components and charts",
-                "Development of screenshot sharing tool desktop client and web interface",
-                "Support, bug fixing and development of online web chat",
-              ],
-            },
-          ],
-          stack: [
-            "JavaScript",
-            "React",
-            "Node.js",
-            "Express",
-            "Webpack",
-            "LESS",
-            "Bootstrap",
-          ].join(", "),
-        },
-      ];
+            return {
+                type,
+                localizedType,
+            };
+        };
 
-      const links = [
-        {
-          href: "https://github.com/gazedash",
-          title: "GitHub",
-          icon: "fab fa-github",
-        },
-        {
-          href: "mailto:gazedash@gmail.com",
-          title: "E-mail",
-          icon: "fa fa-envelope",
-        },
-        {
-          href: "https://t.me/gazedash",
-          title: "Telegram",
-          icon: "fab fa-telegram",
-        },
-        {
-          href: "https://wa.me/79952602040",
-          title: "WhatsApp",
-          icon: "fab fa-whatsapp",
-        },
-        {
-          href: "https://www.linkedin.com/in/gazedash",
-          title: "LinkedIn",
-          icon: "fab fa-linkedin",
-        },
-      ];
-
-      const useTemplate = () => {
-        const templates = [
-          { name: "default" },
-          { id: 1, name: "Type A" },
-          { id: 2, name: "Type B" },
-          { id: 3, name: "Type C" },
+        // data
+        const allJobs = [
+            {
+                title: "Tinkoff Bank",
+                duration: "'21 - present",
+                position: "Sr Frontend Engineer",
+                city: "Remote",
+                projects: [
+                    {
+                        achievements: [
+                            "Added tech metrics, dashboards and alerts that caught dozen of incidents and fired off seconds before emergency",
+                            "Developed features for the main banking application",
+                            "Delivered numerous successful production releases on regular basis",
+                            "Collaborated with SRE and other teams to make sure that users get the best service possible",
+                            "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
+                            "Improved technical state of the project and its infrastructure by migrating from legacy services",
+                            "Created specifications and epics from business descriptions, eliminated unknown factors"
+                        ],
+                    },
+                ],
+                stack: [
+                    "TS, Node, Fastify, React, SSR, React Query, Gitlab CI, Docker, K8s, Jest, Playwright, Grafana, DI, Sentry",
+                ].join(", "),
+            },
+            {
+                title: "Noveo",
+                duration: "'18 - '21",
+                position: "Frontend Dev",
+                city: "Russia, Saint Petersburg",
+                projects: [
+                    {
+                        stack:
+                            "TS, React Native, Redux, Fastlane, Firebase, Java, Swift, CI/CD",
+                        title: "Podcast platform",
+                        achievements: [
+                            "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
+                            "Held a key role in development of a cross-platform podcast app",
+                            "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
+                            "Integrated analytics, pushes and deep linking to work together to improve user retention and achieve 30,000+ MAU",
+                            "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
+                            "Implemented downloads, offline mode and subscription features",
+                            "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
+                        ],
+                    },
+                    {
+                        stack: "TS, React, React Native, Redux, Fastlane",
+                        title: "Health & Fitness App",
+                        achievements: [
+                            "Successfully developed and released an app, delivered numerous updates to the end users",
+                            "Implemented multiple features, such as workouts, chatbot, feed with media content",
+                            "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
+                            "Developed sign up & login flow with support for SMS and push notifications (OTP)",
+                        ],
+                    },
+                    {
+                        stack:
+                            "JS, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
+                        title: "HRMS app",
+                        achievements: [
+                            "Created a core module which enabled swift development and decreased error possibility",
+                            "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
+                            "Developed a performant organization tree chart, backoffice module and discussion system",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "Yandex",
+                duration: "'18",
+                position: "Intern",
+                city: "Russia, Moscow",
+                // cvDescription: 'As an intern, I was tasked with improvement of an internal application',
+                projects: [
+                    {
+                        achievements: [
+                            "Delivered a major update of a data visualisation app with a goal to simplify user workflow",
+                            "Migrated the application from legacy infrastructure, set up CI pipeline and improved app performance",
+                        ],
+                    },
+                ],
+                isIntern: true,
+                stack: [
+                    "TS",
+                    "React",
+                    "Highcharts",
+                    "Node",
+                    "Express",
+                    "Postgres",
+                    "Sequelize",
+                    "Docker",
+                    "YDB",
+                    "Yandex.Cloud",
+                ].join(", "),
+            },
+            {
+                type: "cv",
+                title: "Freelance",
+                duration: "'17 - '18",
+                position: "Jr Frontend Dev",
+                city: "Remote",
+                projects: [
+                    {
+                        achievements: [
+                            "Delivered a cross-platform travel app with offline maps support from scratch",
+                            "Developed features for a social survey app, such as social login as well as numerous components and charts",
+                            "Development of screenshot sharing tool desktop client and web interface",
+                            "Support, bug fixing and development of online web chat",
+                        ],
+                    },
+                ],
+                stack: [
+                    "JS",
+                    "React",
+                    "Node",
+                    "Express",
+                    "Webpack",
+                    "LESS",
+                    "Bootstrap",
+                ].join(", "),
+            },
         ];
 
-        const selectedTemplateId = Vue.ref();
+        const links = [
+            {
+                href: "https://github.com/gazedash",
+                title: "GitHub",
+                icon: "fab fa-github",
+            },
+            {
+                href: "mailto:gazedash@gmail.com",
+                title: "E-mail",
+                icon: "fa fa-envelope",
+            },
+            {
+                href: "https://t.me/gazedash",
+                title: "Telegram",
+                icon: "fab fa-telegram",
+            },
+            {
+                href: "https://www.linkedin.com/in/gazedash",
+                title: "LinkedIn",
+                icon: "fab fa-linkedin",
+            },
+        ];
 
-        const selectedTemplate = Vue.computed(() =>
-          templates.find((t) => t.id === selectedTemplateId.value)
-        );
+        const skills = "JS, TS, React, Node, Fastify, Docker, Tailwind"
+        const skills2 = "Vue3, SvelteKit, Solid.JS, Vite, Go, Java, Next.js, Python"
 
-        return {
-          selectedTemplate,
-          selectedTemplateId,
-          templates,
-        };
-      };
+        function setup() {
+            const { localizedType, type } = useType();
+            const { printEmulateClass, emulatePrint, print } = usePrint();
+            const jobs = useJobs(type);
 
-      function setup() {
-        const { localizedType, type } = useType();
-        const { printEmulateClass, emulatePrint, print } = usePrint();
-        const { templates, selectedTemplate, selectedTemplateId } =
-          useTemplate();
-        const jobs = useJobs(type, selectedTemplate);
+            useTitle(localizedType);
 
-        useTitle(localizedType);
+            return {
+                localizedType,
+                type,
+                printEmulateClass,
+                emulatePrint,
+                print,
+                jobs,
+                info,
+                links,
+                version,
+                skills,
+                skills2
+            };
+        }
 
-        return {
-          localizedType,
-          type,
-          printEmulateClass,
-          emulatePrint,
-          print,
-          jobs,
-          info,
-          links,
-          version,
-          selectedTemplateId,
-          templates,
-        };
-      }
-
-      Vue.createApp({ setup }).mount("#app");
+        Vue.createApp({ setup }).mount("#app");
     </script>
-  </body>
+</body>
+
 </html>
