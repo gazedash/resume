@@ -427,7 +427,7 @@
 
         const query = new URLSearchParams(window.location.search)
 
-        const lang = query.get('lang') || 'en'
+        const lang = query.get('lang') || document.documentElement.lang
         const langs = { en: 'ru', ru: 'en' }
         const type = query.get('type') || 'resume'
         const types = { resume: 'cv', cv: 'resume' }
