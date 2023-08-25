@@ -215,7 +215,7 @@
             type === "resume" ? j.type !== "cv" : true;
 
         const useJobs = (type) => {
-            return Vue.computed(() =>allJobs.filter(filterJob(type.value)));
+            return Vue.computed(() => allJobs.filter(filterJob(type.value)));
         };
 
         // data
@@ -475,6 +475,26 @@
 
             useTitle(localizedType);
 
+            const host = window.location.host
+
+            let rdr = 'resume'
+            let file = `${type}_${lang}.pdf`
+
+            let pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
+
+            switch (true) {
+                case host.includes('druce.run'):
+                    pdfHost = `https://druce.run/${rdr}/`
+                    break;
+                case host.includes('gazedash.com'):
+                    pdfHost = `https://gazedash.com/${rdr}/`
+                    break;
+                default:
+                    pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
+            }
+
+            let directUrl = pdfHost + file;
+
             return {
                 localizedType,
                 type,
@@ -494,7 +514,7 @@
                 fields,
                 langs,
                 types,
-                directUrl: `https://raw.githubusercontent.com/gazedash/resume/master/${type}_${lang}.pdf` 
+                directUrl
             };
         }
 
