@@ -58,12 +58,30 @@
         .highlight {
             border-bottom: 1px solid red;
         }
+
+        hr {
+            margin-top: 4px;
+            margin-bottom: 0px;
+            opacity: 0;
+        }
+
+        .ms-n2 {
+            margin-left: -10px;
+        }
+
+        h6 {
+            margin-bottom: 2px;
+        }
+
+        .h-min {
+            height: min-content;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <section class="my-2 mx-4">
+        <section class="mt-1 mx-4">
             <header>
                 <div class="d-flex justify-content-between">
                     <!-- info -->
@@ -75,32 +93,32 @@
                             {{ info.position }} &nbsp;
                         </div>
                         <div class="d-print-none">
-                            <br />
                             <a :href="directUrl">
-                                {{localizedType}} in PDF
+                                {{ fileTitle }}
                             </a>
                         </div>
+                        <div class="mb-1"><b>{{ trans('workExp') }}</b></div>
                     </div>
-                    <div>
+                    <div class="h-min">
                         <!-- links -->
                         <div>
                             <div class="subtext w-100 d-flex flex-row">
-                                <b class="d-none d-md-inline">Links </b>
+                                <b class="d-none d-sm-inline">Links </b>
                                 <span class="ms-1"> </span>
                                 <div v-for="link in links">
                                     <a class="text-secondary" :href="link.href">
                                         <i :class="link.icon" class="text-black align-middle pe-2"></i>
-                                        <span class="subtext text-black d-none d-md-inline d-print-inline">
+                                        <span class="subtext text-black d-none d-sm-inline d-print-inline">
                                             {{ link.title }}
                                         </span>
                                     </a>
                                     &nbsp;
                                 </div>
                             </div>
-                            <div class="d-none d-md-block subtext">
+                            <div class="d-none d-sm-block subtext">
                                 <b class="highlight">{{ trans('keySkills') }}</b> {{skills}}
                             </div>
-                            <div class="d-none d-md-block subtext">
+                            <div class="d-none d-sm-block subtext">
                                 <b class="fw-semibold">{{ trans('addSkills') }}</b> {{skills2}}
                             </div>
                             <div class="pt-3 d-print-none" :class="printEmulateClass">
@@ -123,7 +141,7 @@
                 </div>
             </header>
         </section>
-        <section class="mx-4 my-2 d-block d-md-none">
+        <section class="mx-4 my-2 d-block d-sm-none">
             <div class="subtext">
                 <b class="highlight">{{ trans('keySkills') }}</b> {{skills}}
             </div>
@@ -136,14 +154,14 @@
             <div class="mb-2">{{ trans('workExp') }}</div>
             <div>
                 <div v-for="job in jobs" class="job">
-                    <h6>
+                    <h6 class="ms-n2">
                         <b>{{ job.title }}</b> {{ job.position }} {{ job.duration
                         }} <span class="fw-light"> {{ job.city }}</span>
                     </h6>
                     <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
-                    <div>
+                    <div class="mt-1">
                         <div v-for="project in job.projects">
-                            <div class="project-title-container pt-2" v-if="project.title">
+                            <div class="project-title-container" v-if="project.title">
                                 <h6>
                                     <span class="ms-2">{{ project.title }}</span>
                                     <span class="fw-lighter">
@@ -221,36 +239,36 @@
         // data
         const allJobs = [
             {
-                title: "Tinkoff Bank",
+                title: "T-Bank (ex. Tinkoff Bank)",
                 duration: "'21 - present",
                 position: "Sr Frontend Engineer",
                 city: "Remote",
                 projects: [
                     {
                         achievements: [
-                            "Improved main account widget loading speed 2-4x",
+                            "Held a lead role of a 10+ dev team, onboarded and mentored handful of devs, conducted many tech interviews",
+                            "Improved main account widget loading speed 2x",
+                            "Development of a new banking web app and PWA, legacy support, regular successful releases",
                             "Added tech metrics, dashboards and alerts that caught dozen of incidents and fired off seconds before emergency",
-                            "Developed features for the main banking application",
-                            "Delivered numerous successful production releases on regular basis",
                             "Collaborated with SRE and other teams to make sure that users get the best service possible",
                             "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
                             "Improved technical state of the project and its infrastructure by migrating from legacy services",
                             "Created specifications and epics from business descriptions, eliminated unknown factors"
                         ],
                         achievements_ru: [
-                            "Увеличил скорость загрузки главного виджета счетов в 2-4 раза",
+                            "Выполнял роль лида в команде из 10+ разработчиков, онбордил и менторил разработчиков, провел множество технических собеседований",
+                            "Увеличил скорость загрузки главного виджета счетов в 2 раза",
+                            "Разработка функционала нового личного кабинета и PWA, поддержка легаси, регулярные успешные релизы",
                             "Добавил технические метрики, дашборды, алерты, отловили дюжину инцидентов за секунды до возникновения",
-                            "Разработка различного функционала банковского приложения",
-                            "Поставка большого количества успешных релизов на бой на регулярной основе",
                             "Сотрудничество с SRE и другими командами для достижения наилучшего пользовательского опыта",
                             "Обслуживание, поддержка, мониторинг и обновление боевой инфры 10+ микросервисов, BFF и приложений",
-                            "Улучшил техническое состояние проект и его инфраструктуры за счет миграции с легаси сервисов",
+                            "Улучшил техническое состояние проекта и инфраструктуры за счет миграции с легаси сервисов",
                             "Создание спецификации и эпиков по бизнес требованиям, выяснение неизвестных факторов риска"
                         ]
                     },
                 ],
                 stack: [
-                    "TS, Node, Fastify, React, SSR, React Query, Gitlab CI, Docker, K8s, Jest, Playwright, Grafana, DI, Sentry",
+                    "TS, Node, Fastify, React, SSR, React Query, Gitlab CI, Docker, K8s, Jest, Playwright, Grafana, DI, Sentry, Micro Frontends",
                 ].join(", "),
             },
             {
@@ -265,36 +283,35 @@
                         title: "Podcast platform",
                         achievements: [
                             "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
-                            "Held a key role in development of a cross-platform podcast app",
-                            "Collaborated with the CPO and design team to achieve a +20% success rate during UX studies",
-                            "Integrated analytics, pushes and deep linking to work together to improve user retention and achieve 30,000+ MAU",
-                            "Created and integrated a player lib which satisfied requirements for smooth playback and various audio format support",
-                            "Implemented downloads, offline mode and subscription features",
-                            "Created a coding interview plan and carried out 50+ interviews to hire new devs for the project",
+                            "Held a key role in development of a cross-platform podcast app; set up CI/CD",
+                            "Collaborated with CPO and design team to improve UX and accelerate development",
+                            "Integrated analytics, pushes and deep linking to boost user retention and achieve 30,000+ MAU",
+                            "Created and integrated a player lib that satisfied requirements for smooth playback and various audio format support",
+                            "Implemented downloads, offline mode, subscription features and more",
+                            "Designed and executed a coding interview plan, conducting 50+ interviews to hire new developers",
                         ],
                         achievements_ru: [
                             "Возглавил и управлял командой из 6 разработчиков, чтобы майлстоуны проекта были выполнены вовремя",
-                            "Выполнял главную роль в разработке кроссплатформенного приложения подкастов",
-                            "Сотрудничество с владельцем продукта и дизайнерами для достижения +20% успешных UX исследований",
+                            "Выполнял главную роль в разработке кроссплатформенного приложения подкастов; настроил CI/CD",
+                            "Сотрудничество с владельцем продукта и дизайнерами для улучшения UX и ускорения разработки",
                             "Интегрировал аналитику, пуши и глубокие ссылки, чтобы достичь 30,000+ MAU",
                             "Создал и интегрировал библиотеку плеера с плавным воспроизведению и поддержкой разных форматов аудио",
-                            "Разработал функционал скачивания, оффлайн режим и подписок",
-                            "Создал план собеседования и провел 50+ собеседований, для найма новых разработчиков в компанию"
+                            "Разработал функционал скачивания, оффлайн режим и подписок и многое другое",
+                            "Создал план собеседования и провел 50+ собеседований, для найма новых разработчиков"
                         ]
                     },
                     {
-                        stack: "TS, React, React Native, Redux, Fastlane",
+                        stack: "TS, React, React Native, Redux, Fastlane, CI/CD, Firebase",
                         title: "Health & Fitness App",
                         achievements: [
-                            "Successfully developed and released an app, delivered numerous updates to the end users",
-                            "Implemented multiple features, such as workouts, chatbot, feed with media content",
-                            "Integrated loyalty, subscriptions and payments (including discounts, bonuses, promo codes)",
-                            "Developed sign up & login flow with support for SMS and push notifications (OTP)",
+                            "Developed and released an app from scratch, set up CI/CD, delivered numerous updates to the end users",
+                            "Implemented workouts, chatbot, feed with media content, sign up, login by SMS, push (OTP)",
+                            "Integrated loyalty, subscriptions, payments, discounts, bonuses, promo codes",
                         ],
                         achievements_ru: [
-                            "Успешно разработал и выпустил приложение, а также множество обновлений для конечных пользователей",
-                            "Разработал множество фич, такие как упражнения, чатбот, новостная лента с медиа контентом",
-                            "Разработал флоу регистрации и логина с поддержкой входа по СМС и пуш кодам"
+                            "Разработал и выпустил приложение с нуля, настроил CI/CD, доставил множество обновлений для пользователей",
+                            "Имплементировал упражнения, чатбота, новостную ленту с медиа контентом, регистрацию, логин по СМС, пушам",
+                            "Интегрировал систему лояльности, подписки, платежи, скидки, бонусы, промокоды"
                         ]
                     },
                     {
@@ -302,7 +319,7 @@
                             "JS, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
                         title: "HRMS Service",
                         achievements: [
-                            "Created core module to speed up development, performant org tree chart, backoffice module and discussion page",
+                            "Created core module to accelerate development, performant org tree chart, backoffice module and discussion page",
                             "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)",
                         ],
                         achievements_ru: [
@@ -323,7 +340,7 @@
                             "Improved UI/UX & performance, migrated from legacy infra, set up CI/CD in data vizualization app",
                         ],
                         achievements_ru: [
-                            "Улучшение UI/UX и производительности, миграция с легаси инфры, настройка CI/CD в приложении визуализации данных"
+                            "Улучшение производительности, UI/UX; миграция с легаси инфры, настройка CI/CD в сервисе визуализации данных"
                         ]
                     },
                 ],
@@ -431,6 +448,16 @@
         const types = { resume: 'cv', cv: 'resume' }
 
         const fields = {
+            resumeInPdf: {
+                name: 'resumeInPdf',
+                ru: "Резюме в PDF",
+                en: "Resume in PDF",
+            },
+            cvInPdf: {
+                name: 'cvInPdf',
+                ru: 'CV в PDF',
+                en: 'CV in PDF'
+            },
             achievements: {
                 name: 'achievements',
                 ru: 'achievements_ru',
@@ -464,6 +491,8 @@
             lang,
             type: types[type]
         })
+
+        const fileTitle = trans((type === 'resume' ? fields.resumeInPdf.name : fields.cvInPdf.name))
 
         const localizedTypes = {
             resume: "Resume",
@@ -517,7 +546,8 @@
                 fields,
                 langs,
                 types,
-                directUrl
+                directUrl,
+                fileTitle
             };
         }
 
