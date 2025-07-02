@@ -264,6 +264,14 @@
             display: block;
         }
 
+        @media print
+{    
+    .d-print-none, .d-print-none *
+    {
+        display: none !important;
+    }
+}
+
         /* Icon styles */
         .icon {
             width: 24px;
@@ -833,6 +841,14 @@
         window.switchType = switchType;
         window.print = print;
         window.emulatePrint = emulatePrint;
+
+        // Show print-emulate elements on Alt+J
+        window.addEventListener('keydown', function(e) {
+            if (e.altKey && (e.key === 'j' || e.key === 'J')) {
+                const printElements = document.querySelectorAll('.print-emulate');
+                printElements.forEach(el => el.classList.add('show'));
+            }
+        });
     </script>
 </body>
 
