@@ -5,36 +5,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://unpkg.com/vue@3"></script>
 
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(103158808, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/103158808" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    
+        ym(103158808, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/103158808" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <title>Andrei Efremov Resume</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mx-4 { margin-left: 2rem; margin-right: 2rem; }
+        .my-2 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .pt-3 { padding-top: 1rem; }
+        .ps-0 { padding-left: 0; }
+        .pe-2 { padding-right: 0.5rem; }
+
+        .d-flex { display: flex; }
+        .d-block { display: block; }
+        .d-none { display: none; }
+        .d-print-none { display: block; }
+        .d-sm-none { display: none; }
+        .d-sm-block { display: none; }
+        .d-sm-inline { display: none; }
+        .flex-row { flex-direction: row; }
+        .flex-wrap { flex-wrap: wrap; }
+        .justify-content-between { justify-content: space-between; }
+        .justify-content-start { justify-content: flex-start; }
+        .align-middle { vertical-align: middle; }
+        .align-items-center { align-items: center; }
+
+        .w-100 { width: 100%; }
+        .h-min { height: min-content; }
+
+        .text-secondary { color: #6c757d; }
+        .text-black { color: #000; }
+        .text-light { color: #f8f9fa; }
+
+        .fw-light { font-weight: 300; }
+        .fw-lighter { font-weight: 200; }
+        .fw-semibold { font-weight: 600; }
+
+        .m-0 { margin: 0; }
+
+        .ms-1 { margin-left: 0.25rem; }
+        .ms-2 { margin-left: 0.5rem; }
+        .ms-n2 { margin-left: -0.5rem; }
+
         hr {
             display: block;
             height: 1px;
@@ -42,6 +97,9 @@
             width: 100%;
             border: none;
             border-top: solid 1px black;
+            margin-top: 4px;
+            margin-bottom: 0px;
+            opacity: 0;
         }
 
         @page {
@@ -49,20 +107,24 @@
             margin: 0mm;
         }
 
-        /* @media print {
-  .job {page-break-after: always;}
-        } */
         .project-title-container h6 {
-            font-size: 14px;
+            font-size: 15px;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .achievement {
             font-size: 14px;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            line-height: 1.4;
         }
 
         .stack {
             font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
         }
 
         .hidden-text {
@@ -74,48 +136,206 @@
         }
 
         .highlight {
-            border-bottom: 1px solid red;
-        }
-
-        hr {
-            margin-top: 4px;
-            margin-bottom: 0px;
-            opacity: 0;
-        }
-
-        .ms-n2 {
-            margin-left: -10px;
+            color: #e74c3c;
+            font-weight: 600;
         }
 
         h6 {
-            margin-bottom: 2px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 16px;
         }
 
-        .h-min {
-            height: min-content;
+        .job-title {
+            font-size: 16px;
+        }
+
+        .job-position {
+            font-size: 16px;
+        }
+
+        .job-duration {
+            font-size: 16px;
+        }
+
+        .job-city {
+            font-size: 16px;
+        }
+
+        h5 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Override for secondary text links to show underlines */
+        a.text-secondary {
+            color: #7f8c8d;
+        }
+
+        a.text-secondary:hover {
+            color: #34495e;
+            text-decoration: underline;
+        }
+
+        #pdf-link {
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (min-width: 576px) {
+            .d-sm-inline { display: inline; }
+            .d-sm-block { display: block; }
+        }
+
+        @media (max-width: 575.98px) {
+            .d-sm-none { display: none; }
+            .d-sm-block { display: none; }
+            .d-block { display: block; }
+        }
+
+        @media print {
+            .d-print-none { display: none; }
+            .d-print-inline { display: inline; }
+        }
+
+        .job {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .print-emulate {
+            display: none;
+        }
+
+        .print-emulate.show {
+            display: block;
+        }
+
+        /* Icon styles */
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icon-sm {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
+    <!-- Templates -->
+    <template id="link-template">
+        <a class="text-secondary" href="">
+            <svg class="icon text-black align-middle pe-2" viewBox="0 0 24 24" fill="currentColor">
+            </svg>
+            <span class="subtext text-black d-none d-sm-inline d-print-inline"></span>
+        </a>
+        &nbsp;
+    </template>
+
+    <template id="project-template">
+        <div class="project-title-container" style="display: none;">
+            <h6>
+                <span class="ms-2"></span>
+                <span class="fw-lighter">
+                    | <span class="fw-light"></span><span class="project-stack"></span>
+                </span>
+            </h6>
+        </div>
+        <ul class="mb-1 ps-0">
+        </ul>
+    </template>
+
+    <template id="job-template">
+        <div class="job">
+            <h6 class="ms-n2">
+                <b class="job-title"></b> <span class="job-position"></span> <span class="job-duration"></span> <span class="fw-light job-city"></span>
+            </h6>
+            <div class="cv-description" style="display: none;"></div>
+            <div class="job-projects">
+            </div>
+            <div class="stack" style="display: none;">
+                <span class="fw-lighter"><b>Stack</b>: <span class="job-stack"></span></span>
+            </div>
+            <hr />
+        </div>
+    </template>
+
+    <div id="app" style="max-width: 1200px; margin: 0 auto;">
         <section class="mt-1 mx-4">
             <header>
                 <div class="d-flex justify-content-between">
                     <!-- info -->
                     <div>
                         <h5 class="m-0">
-                            <b> {{ info.name }} </b>
+                            <b id="info-name"></b>
                         </h5>
-                        <div @click="emulatePrint" class="subtext">
-                            {{ info.position }} &nbsp;
+                        <div class="subtext">
+                            <span id="info-position"></span> &nbsp;
                         </div>
                         <div class="d-print-none">
-                            <a :href="directUrl">
-                                {{ fileTitle }}
+                            <a id="pdf-link" href="">
+                                <span id="file-title"></span>
                             </a>
                         </div>
-                        <div class="mb-1"><b>{{ trans('workExp') }}</b></div>
+                        <div class="mb-1"><b id="work-exp-title"></b></div>
                     </div>
                     <div class="h-min">
                         <!-- links -->
@@ -123,35 +343,28 @@
                             <div class="subtext w-100 d-flex flex-row">
                                 <b class="d-none d-sm-inline">Links </b>
                                 <span class="ms-1"> </span>
-                                <div v-for="link in links">
-                                    <a class="text-secondary" :href="link.href">
-                                        <i :class="link.icon" class="text-black align-middle pe-2"></i>
-                                        <span class="subtext text-black d-none d-sm-inline d-print-inline">
-                                            {{ link.title }}
-                                        </span>
-                                    </a>
-                                    &nbsp;
-                                </div>
+                                <div id="links-container" class="d-flex flex-row"></div>
                             </div>
                             <div class="d-none d-sm-block subtext">
-                                <b class="highlight">{{ trans('keySkills') }}</b> {{skills}}
+                                <b class="highlight" id="key-skills-label"></b> <span id="skills"></span>
                             </div>
                             <div class="d-none d-sm-block subtext">
-                                <b class="fw-semibold">{{ trans('addSkills') }}</b> {{skills2}}
+                                <b class="fw-semibold" id="add-skills-label"></b> <span id="skills2"></span>
                             </div>
-                            <div class="pt-3 d-print-none" :class="printEmulateClass">
+                            <div class="pt-3 d-print-none print-emulate" id="printEmulate">
                                 <button class="btn btn-primary" onclick="print()">
-                                    <i class="fa fa-print"></i>
+                                    <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                                    </svg>
                                     Print
                                 </button>
                             </div>
-                            <div class="pt-3 d-print-none" :class="printEmulateClass">
+                            <div class="pt-3 d-print-none print-emulate" id="printEmulate">
                                 <div>
-                                    <button @click="switchType()">Switch Type to {{ types[type] }}</button>
+                                    <button onclick="switchType()">Switch Type to <span id="next-type"></span></button>
                                 </div>
-
                                 <div>
-                                    <button @click="switchLang()">Switch Lang to {{ langs[lang] }}</button>
+                                    <button onclick="switchLang()">Switch Lang to <span id="next-lang"></span></button>
                                 </div>
                             </div>
                         </div>
@@ -159,56 +372,26 @@
                 </div>
             </header>
         </section>
-        <section class="mx-4 my-2 d-block d-sm-none">
+        <section class="mx-4 my-2 d-block d-sm-none" id="mobile-skills">
             <div class="subtext">
-                <b class="highlight">{{ trans('keySkills') }}</b> {{skills}}
+                <b class="highlight" id="key-skills-label-mobile"></b> <span id="skills-mobile"></span>
             </div>
             <div class="subtext">
-                <b class="fw-semibold">{{ trans('addSkills') }}</b> {{skills2}}
+                <b class="fw-semibold" id="add-skills-label-mobile"></b> <span id="skills2-mobile"></span>
             </div>
         </section>
         <section class="mx-4">
             <!-- Work Experience -->
-            <!-- <div class="mb-2">{{ trans('workExp') }}</div> -->
-            <div>
-                <div v-for="job in jobs" class="job">
-                    <h6 class="ms-n2">
-                        <b>{{ job.title }}</b> {{ job.position }} {{ job.duration
-                        }} <span class="fw-light"> {{ job.city }}</span>
-                    </h6>
-                    <div v-if="type === 'cv'">{{ job.cvDescription }}</div>
-                    <div class="mt-1">
-                        <div v-for="project in job.projects">
-                            <div class="project-title-container" v-if="project.title">
-                                <h6>
-                                    <span class="ms-2">{{ project.title }}</span>
-                                    <span class="fw-lighter">
-                                        | <span class="fw-light"></span>{{ project.stack }}
-                                    </span>
-                                </h6>
-                            </div>
-                            <ul class="mb-1 ps-0">
-                                <li class="achievement" v-for="achievement in project[trans(fields.achievements.name)]">
-                                    {{ achievement }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Stack -->
-                    <div class="stack" v-if="job.stack">
-                        <span class="fw-lighter"><b>Stack</b>: {{ job.stack }}</span>
-                    </div>
-                    <hr />
-                </div>
+            <div id="jobs-container">
             </div>
         </section>
         <div>
-            <span class="hidden-text d-none text-light">{{ version }}</span>
+            <span class="hidden-text d-none text-light" id="version"></span>
         </div>
     </div>
 
     <script>
-        // const
+        // Constants
         const version = `v${Date.now()}`;
 
         const info = {
@@ -216,51 +399,13 @@
             position: "Senior Frontend Engineer",
         };
 
-        // document title
-        const documentTitle = (localizedType = "Resume.") => {
-            document.title = `${info.name} ${localizedType}`;
-        };
-
-        const useTitle = (localizedType) => {
-            Vue.onMounted(() => documentTitle(localizedType.value));
-            Vue.watch(() => localizedType.value, documentTitle);
-        };
-
-        // print
-        const usePrint = () => {
-            const klass = "d-none";
-            const state = Vue.ref(klass);
-
-            const emulatePrint = () => {
-                state.value = state.value === klass ? "" : klass;
-            };
-
-            const print = () => {
-                emulatePrint();
-                window.print();
-            };
-
-            return {
-                printEmulateClass: state,
-                emulatePrint,
-                print,
-            };
-        };
-
-        const filterJob = (type) => (j) =>
-            type === "resume" ? j.type !== "cv" : true;
-
-        const useJobs = (type) => {
-            return Vue.computed(() => allJobs.filter(filterJob(type.value)));
-        };
-
-        // data
+        // Data
         const allJobs = [
             {
                 title: "T-Bank (ex. Tinkoff Bank)",
                 duration: "'21 - present",
                 position: "Sr Frontend Engineer",
-                city: "Remote",
+                city: "Moscow / Remote",
                 projects: [
                     {
                         achievements: [
@@ -414,25 +559,26 @@
             {
                 href: "https://github.com/gazedash",
                 title: "GitHub",
-                icon: "fab fa-github",
+                iconSvg: '<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>',
             },
             {
                 href: "mailto:gazedash@gmail.com",
                 title: "E-mail",
-                icon: "fa fa-envelope",
+                iconSvg: '<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>',
             },
             {
                 href: "https://t.me/gazedash",
                 title: "Telegram",
-                icon: "fab fa-telegram",
+                iconSvg: '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>',
             },
             {
                 href: "https://www.linkedin.com/in/gazedash",
                 title: "LinkedIn",
-                icon: "fab fa-linkedin",
+                iconSvg: '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>',
             },
         ];
 
+        // Validation
         allJobs.forEach(j => {
             return j.projects.forEach(p => {
                 const tooLongLength = 117
@@ -458,8 +604,8 @@
         const skills = "JS, TS, React, Node, Fastify, Docker, Tailwind"
         const skills2 = "Vue3, SvelteKit, Solid.JS, Vite, Go, Java, Next.js, Python"
 
+        // URL parsing
         const query = new URLSearchParams(window.location.search)
-
         const lang = query.get('lang') || document.documentElement.lang
         const langs = { en: 'ru', ru: 'en' }
         const type = query.get('type') || 'resume'
@@ -475,11 +621,6 @@
                 name: 'cvInPdf',
                 ru: 'CV в PDF',
                 en: 'CV in PDF'
-            },
-            achievements: {
-                name: 'achievements',
-                ru: 'achievements_ru',
-                en: 'achievements'
             },
             workExp: {
                 name: 'workExp',
@@ -500,76 +641,198 @@
 
         const trans = (key) => fields[key][lang]
 
-        const switchLang = () => window.location.search = new URLSearchParams({
-            lang: langs[lang],
-            type
-        })
+        // Functions
+        const switchLang = () => {
+            window.location.search = new URLSearchParams({
+                lang: langs[lang],
+                type
+            })
+        }
 
-        const switchType = () => window.location.search = new URLSearchParams({
-            lang,
-            type: types[type]
-        })
+        const switchType = () => {
+            window.location.search = new URLSearchParams({
+                lang,
+                type: types[type]
+            })
+        }
 
-        const fileTitle = trans((type === 'resume' ? fields.resumeInPdf.name : fields.cvInPdf.name))
+        const filterJob = (type) => (j) =>
+            type === "resume" ? j.type !== "cv" : true;
 
+        const getJobs = (type) => allJobs.filter(filterJob(type));
+
+        // Print functionality
+        const emulatePrint = () => {
+            const printElements = document.querySelectorAll('.print-emulate');
+            printElements.forEach(el => {
+                el.classList.toggle('show');
+            });
+        }
+
+        const print = () => {
+            emulatePrint();
+            window.print();
+        }
+
+        // URL generation
+        const host = window.location.host
+        let rdr = 'resume'
+        let file = `${type}_${lang}.pdf`
+        let pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
+
+        switch (true) {
+            case host.includes('ru.gazedash.com'):
+                pdfHost = `https://ru.gazedash.com/${rdr}/`
+                break;
+            case host.includes('gazedash.com'):
+                pdfHost = `https://gazedash.com/${rdr}/`
+                break;
+            default:
+                pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
+        }
+
+        const directUrl = pdfHost + file;
+        const fileTitle = type === 'resume' ? trans('resumeInPdf') : trans('cvInPdf')
+
+        // Template rendering functions
+        function renderLinks() {
+            const container = document.getElementById('links-container');
+            container.innerHTML = '';
+            
+            links.forEach(link => {
+                const template = document.getElementById('link-template');
+                const clone = template.content.cloneNode(true);
+                
+                const linkElement = clone.querySelector('a');
+                linkElement.href = link.href;
+                
+                const svg = clone.querySelector('svg');
+                svg.innerHTML = link.iconSvg;
+                
+                const titleSpan = clone.querySelector('span');
+                titleSpan.textContent = link.title;
+                
+                container.appendChild(clone);
+            });
+        }
+
+        function renderProject(project, lang) {
+            const template = document.getElementById('project-template');
+            const clone = template.content.cloneNode(true);
+            
+            const titleContainer = clone.querySelector('.project-title-container');
+            const titleSpan = clone.querySelector('.ms-2');
+            const stackSpan = clone.querySelector('.project-stack');
+            const ul = clone.querySelector('ul');
+            
+            if (project.title) {
+                titleContainer.style.display = 'block';
+                titleSpan.textContent = project.title;
+                stackSpan.textContent = project.stack || '';
+            }
+            
+            const achievements = lang === 'ru' ? project.achievements_ru : project.achievements;
+            achievements.forEach(achievement => {
+                const li = document.createElement('li');
+                li.className = 'achievement';
+                li.textContent = achievement;
+                ul.appendChild(li);
+            });
+            
+            return clone;
+        }
+
+        function renderJob(job, lang, isCv) {
+            const template = document.getElementById('job-template');
+            const clone = template.content.cloneNode(true);
+            
+            clone.querySelector('.job-title').textContent = job.title;
+            clone.querySelector('.job-position').textContent = job.position;
+            clone.querySelector('.job-duration').textContent = job.duration;
+            clone.querySelector('.job-city').textContent = job.city;
+            
+            if (isCv && job.cvDescription) {
+                const cvDesc = clone.querySelector('.cv-description');
+                cvDesc.textContent = job.cvDescription;
+                cvDesc.style.display = 'block';
+            }
+            
+            const projectsContainer = clone.querySelector('.job-projects');
+            job.projects.forEach(project => {
+                const projectElement = renderProject(project, lang);
+                projectsContainer.appendChild(projectElement);
+            });
+            
+            if (job.stack) {
+                const stackDiv = clone.querySelector('.stack');
+                stackDiv.querySelector('.job-stack').textContent = job.stack;
+                stackDiv.style.display = 'block';
+            }
+            
+            return clone;
+        }
+
+        function renderPage() {
+            // Set basic info
+            document.getElementById('info-name').textContent = info.name;
+            document.getElementById('info-position').textContent = info.position;
+            
+
+            
+            document.getElementById('pdf-link').href = directUrl;
+            document.getElementById('file-title').textContent = fileTitle;
+            document.getElementById('work-exp-title').textContent = trans('workExp');
+            document.getElementById('version').textContent = version;
+            
+            // Set skills
+            document.getElementById('skills').textContent = skills;
+            document.getElementById('skills2').textContent = skills2;
+            
+            // Set mobile skills (only visible on mobile)
+            document.getElementById('skills-mobile').textContent = skills;
+            document.getElementById('skills2-mobile').textContent = skills2;
+            
+            // Set labels
+            document.getElementById('key-skills-label').textContent = trans('keySkills');
+            document.getElementById('add-skills-label').textContent = trans('addSkills');
+            document.getElementById('key-skills-label-mobile').textContent = trans('keySkills');
+            document.getElementById('add-skills-label-mobile').textContent = trans('addSkills');
+            
+            // Set navigation
+            document.getElementById('next-type').textContent = types[type];
+            document.getElementById('next-lang').textContent = langs[lang];
+            
+            // Render links
+            renderLinks();
+            
+            // Render jobs
+            const jobsContainer = document.getElementById('jobs-container');
+            jobsContainer.innerHTML = '';
+            
+            const filteredJobs = getJobs(type);
+            filteredJobs.forEach(job => {
+                const jobElement = renderJob(job, lang, type === 'cv');
+                jobsContainer.appendChild(jobElement);
+            });
+        }
+
+        // Set document title
         const localizedTypes = {
             resume: "Resume",
             cv: "CV",
         };
+        document.title = `${info.name} ${localizedTypes[type]}`;
 
-        const localizedType = Vue.computed(() => localizedTypes[type]);
+        // Render the page
+        console.log('Script is running, about to render page...');
+        renderPage();
+        console.log('Page rendered successfully');
 
-        function setup() {
-            const { printEmulateClass, emulatePrint, print } = usePrint();
-            const jobs = useJobs(Vue.toRef(type));
-
-            useTitle(localizedType);
-
-            const host = window.location.host
-
-            let rdr = 'resume'
-            let file = `${type}_${lang}.pdf`
-
-            let pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
-
-            switch (true) {
-                case host.includes('ru.gazedash.com'):
-                    pdfHost = `https://ru.gazedash.com/${rdr}/`
-                    break;
-                case host.includes('gazedash.com'):
-                    pdfHost = `https://gazedash.com/${rdr}/`
-                    break;
-                default:
-                    pdfHost = `https://raw.githubusercontent.com/gazedash/${rdr}/master/`
-            }
-
-            let directUrl = pdfHost + file;
-
-            return {
-                localizedType,
-                type,
-                printEmulateClass,
-                emulatePrint,
-                print,
-                jobs,
-                info,
-                links,
-                version,
-                skills,
-                skills2,
-                lang,
-                switchLang,
-                switchType,
-                trans,
-                fields,
-                langs,
-                types,
-                directUrl,
-                fileTitle
-            };
-        }
-
-        Vue.createApp({ setup }).mount("#app");
+        // Make functions globally available
+        window.switchLang = switchLang;
+        window.switchType = switchType;
+        window.print = print;
+        window.emulatePrint = emulatePrint;
     </script>
 </body>
 
