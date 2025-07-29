@@ -4,9 +4,12 @@
   "description": "Generate resume and CV PDFs in English and Russian using Playwright.",
   "main": "generate_pdfs.js",
   "scripts": {
-    "generate": "node generate_pdfs.js"
+    "generate-pdfs": "node generate_pdfs.js",
+    "pregenerate-pdfs": "node generate_html.js",
+    "generate-html": "node generate_html.js"
   },
   "dependencies": {
-    "playwright": "^1.43.0"
+    "playwright": "^1.43.0",
+    "handlebars": "^4.7.8"
   }
 } 

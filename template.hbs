@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{{seo.meta.title}}</title>
+    <meta name="title" content="{{seo.meta.title}}" />
+    <meta name="description" content="{{seo.meta.description}}" />
+    <meta name="keywords" content="{{seo.meta.keywords}}" />
+    <meta name="author" content="{{seo.meta.author}}" />
+    <meta name="robots" content="{{seo.meta.robots}}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{seo.meta.og.type}}" />
+    <meta property="og:url" content="{{seo.meta.og.url}}" />
+    <meta property="og:title" content="{{seo.meta.og.title}}" />
+    <meta property="og:description" content="{{seo.meta.og.description}}" />
+    <meta property="og:image" content="{{seo.meta.og.image}}" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="{{seo.meta.twitter.card}}" />
+    <meta property="twitter:url" content="{{seo.meta.og.url}}" />
+    <meta property="twitter:title" content="{{seo.meta.twitter.title}}" />
+    <meta property="twitter:description" content="{{seo.meta.twitter.description}}" />
+    <meta property="twitter:image" content="{{seo.meta.og.image}}" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="theme-color" content="#0d6efd" />
+    
+    <!-- Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{info.name}}",
+      "jobTitle": "{{info.position}}",
+      "description": "{{seo.meta.description}}",
+      "url": "{{seo.meta.og.url}}",
+      "sameAs": [
+        {{#each links}}
+        "{{href}}"{{#unless @last}},{{/unless}}
+        {{/each}}
+      ],
+      "knowsAbout": [
+        "React", "TypeScript", "JavaScript", "Frontend Development", 
+        "Web Development", "Mobile Development", "Startup Development"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Available for opportunities"
+      }
+    }
+    </script>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(103158808, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/103158808" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "844e06facc9746ec9d7101d3165214fd"}'></script><!-- End Cloudflare Web Analytics -->
+
+    <title>{{info.name}} Resume/CV</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mx-4 { margin-left: 2rem; margin-right: 2rem; }
+        .my-2 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .pt-3 { padding-top: 1rem; }
+        .ps-0 { padding-left: 0; }
+        .pe-2 { padding-right: 0.5rem; }
+
+        .d-flex { display: flex; }
+        .d-block { display: block; }
+        .d-none { display: none; }
+        .d-print-none { display: block; }
+        .d-sm-none { display: none; }
+        .d-sm-block { display: none; }
+        .d-sm-inline { display: none; }
+        .flex-row { flex-direction: row; }
+        .flex-wrap { flex-wrap: wrap; }
+        .justify-content-between { justify-content: space-between; }
+        .justify-content-start { justify-content: flex-start; }
+        .align-middle { vertical-align: middle; }
+        .align-items-center { align-items: center; }
+
+        .w-100 { width: 100%; }
+        .h-min { height: min-content; }
+
+        .text-secondary { color: #6c757d; }
+        .text-black { color: #000; }
+        .text-light { color: #f8f9fa; }
+
+        .fw-light { font-weight: 300; }
+        .fw-lighter { font-weight: 200; }
+        .fw-semibold { font-weight: 600; }
+
+        .m-0 { margin: 0; }
+
+        .ms-1 { margin-left: 0.25rem; }
+        .ms-2 { margin-left: 0.5rem; }
+        .ms-n2 { margin-left: -0.5rem; }
+
+        hr {
+            display: block;
+            height: 1px;
+            background: transparent;
+            width: 100%;
+            border: none;
+            border-top: solid 1px black;
+            margin-top: 4px;
+            margin-bottom: 0px;
+            opacity: 0;
+        }
+
+        @page {
+            size: auto;
+            margin: 0mm;
+        }
+
+        .project-title-container h6 {
+            font-size: 15px;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement {
+            font-size: 14px;
+            padding-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .stack {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .hidden-text {
+            font-size: 1px;
+        }
+
+        .subtext {
+            font-size: 13px;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        h6 {
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .job-title {
+            font-size: 16px;
+        }
+
+        .job-position {
+            font-size: 16px;
+        }
+
+        .job-duration {
+            font-size: 16px;
+        }
+
+        .job-city {
+            font-size: 16px;
+        }
+
+        h5 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Override for secondary text links to show underlines */
+        a.text-secondary {
+            color: #7f8c8d;
+        }
+
+        a.text-secondary:hover {
+            color: #34495e;
+            text-decoration: underline;
+        }
+
+        #pdf-link {
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (min-width: 576px) {
+            .d-sm-inline { display: inline; }
+            .d-sm-block { display: block; }
+        }
+
+        @media (max-width: 575.98px) {
+            .d-sm-none { display: none; }
+            .d-sm-block { display: none; }
+            .d-block { display: block; }
+        }
+
+        @media print {
+            .d-print-none { display: none; }
+            .d-print-inline { display: inline; }
+        }
+
+        .job {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .print-emulate {
+            display: none;
+        }
+
+        .print-emulate.show {
+            display: block;
+        }
+
+        @media print
+{    
+    .d-print-none, .d-print-none *
+    {
+        display: none !important;
+    }
+}
+
+        /* Icon styles */
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icon-sm {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* SEO content - hidden but present in DOM */
+        .seo-content {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" style="max-width: 1200px; margin: 0 auto;">
+        <section class="mt-1 mx-4">
+            <header>
+                <div class="d-flex justify-content-between">
+                    <!-- info -->
+                    <div>
+                        <h5 class="m-0">
+                            <b id="info-name">{{info.name}}</b>
+                        </h5>
+                        <div class="subtext">
+                            <span id="info-position">{{info.position}}</span> &nbsp;
+                        </div>
+                        <div class="d-print-none">
+                            <a id="pdf-link" href="{{pdfUrl}}">
+                                <span id="file-title">{{fileTitle}}</span>
+                            </a>
+                        </div>
+                        <div class="mb-1"><b id="work-exp-title">{{workExpTitle}}</b></div>
+                    </div>
+                    <div class="h-min">
+                        <!-- links -->
+                        <div>
+                            <div class="subtext w-100 d-flex flex-row">
+                                <b class="d-none d-sm-inline">{{linksTitle}}</b>
+                                <span class="ms-1"> </span>
+                                <div id="links-container" class="d-flex flex-row">
+                                    {{#each links}}
+                                    <a class="text-secondary" href="{{href}}">
+                                        <svg class="icon text-black align-middle pe-2" viewBox="0 0 24 24" fill="currentColor">
+                                            {{{iconSvg}}}
+                                        </svg>
+                                        <span class="subtext text-black d-none d-sm-inline d-print-inline">{{title}}</span>
+                                    </a>
+                                    &nbsp;
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div class="d-none d-sm-block subtext">
+                                <b class="highlight" id="key-skills-label">{{keySkillsLabel}}</b> <span id="skills">{{skills.primary}}</span>
+                            </div>
+                            <div class="d-none d-sm-block subtext">
+                                <b class="fw-semibold" id="add-skills-label">{{addSkillsLabel}}</b> <span id="skills2">{{skills.secondary}}</span>
+                            </div>
+                            <div class="pt-3 d-print-none print-emulate" id="printEmulate">
+                                <button class="btn btn-primary" onclick="print()">
+                                    <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                                    </svg>
+                                    Print
+                                </button>
+                            </div>
+                            <div class="pt-3 d-print-none print-emulate" id="printEmulate">
+                                <div>
+                                    <button onclick="switchType()">Switch Type to <span id="next-type">{{nextType}}</span></button>
+                                </div>
+                                <div>
+                                    <button onclick="switchLang()">Switch Lang to <span id="next-lang">{{nextLang}}</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </section>
+        <section class="mx-4 my-2 d-block d-sm-none" id="mobile-skills">
+            <div class="subtext">
+                <b class="highlight" id="key-skills-label-mobile">{{keySkillsLabel}}</b> <span id="skills-mobile">{{skills.primary}}</span>
+            </div>
+            <div class="subtext">
+                <b class="fw-semibold" id="add-skills-label-mobile">{{addSkillsLabel}}</b> <span id="skills2-mobile">{{skills.secondary}}</span>
+            </div>
+        </section>
+        <section class="mx-4">
+            <!-- Work Experience -->
+            <div id="jobs-container">
+                <!-- Resume English -->
+                <div class="resume-en" style="display: none;">
+                    {{#each resumeEnJobs}}
+                    <div class="job">
+                        <h6 class="ms-n2">
+                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
+                        </h6>
+                        <div class="job-projects">
+                            {{#each projects}}
+                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
+                                <h6>
+                                    <span class="ms-2">{{title}}</span>
+                                    <span class="fw-lighter">
+                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
+                                    </span>
+                                </h6>
+                            </div>
+                            <ul class="mb-1 ps-0">
+                                {{#each achievements}}
+                                <li class="achievement">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{/each}}
+                        </div>
+                        {{#if stack}}
+                        <div class="stack">
+                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
+                        </div>
+                        {{/if}}
+                        <hr />
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- Resume Russian -->
+                <div class="resume-ru" style="display: none;">
+                    {{#each resumeRuJobs}}
+                    <div class="job">
+                        <h6 class="ms-n2">
+                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
+                        </h6>
+                        <div class="job-projects">
+                            {{#each projects}}
+                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
+                                <h6>
+                                    <span class="ms-2">{{title}}</span>
+                                    <span class="fw-lighter">
+                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
+                                    </span>
+                                </h6>
+                            </div>
+                            <ul class="mb-1 ps-0">
+                                {{#each achievements}}
+                                <li class="achievement">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{/each}}
+                        </div>
+                        {{#if stack}}
+                        <div class="stack">
+                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
+                        </div>
+                        {{/if}}
+                        <hr />
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- CV English -->
+                <div class="cv-en" style="display: none;">
+                    {{#each cvEnJobs}}
+                    <div class="job">
+                        <h6 class="ms-n2">
+                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
+                        </h6>
+                        <div class="cv-description" style="display: none;"></div>
+                        <div class="job-projects">
+                            {{#each projects}}
+                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
+                                <h6>
+                                    <span class="ms-2">{{title}}</span>
+                                    <span class="fw-lighter">
+                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
+                                    </span>
+                                </h6>
+                            </div>
+                            <ul class="mb-1 ps-0">
+                                {{#each achievements}}
+                                <li class="achievement">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{/each}}
+                        </div>
+                        {{#if stack}}
+                        <div class="stack">
+                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
+                        </div>
+                        {{/if}}
+                        <hr />
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- CV Russian -->
+                <div class="cv-ru" style="display: none;">
+                    {{#each cvRuJobs}}
+                    <div class="job">
+                        <h6 class="ms-n2">
+                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
+                        </h6>
+                        <div class="cv-description" style="display: none;"></div>
+                        <div class="job-projects">
+                            {{#each projects}}
+                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
+                                <h6>
+                                    <span class="ms-2">{{title}}</span>
+                                    <span class="fw-lighter">
+                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
+                                    </span>
+                                </h6>
+                            </div>
+                            <ul class="mb-1 ps-0">
+                                {{#each achievements}}
+                                <li class="achievement">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{/each}}
+                        </div>
+                        {{#if stack}}
+                        <div class="stack">
+                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
+                        </div>
+                        {{/if}}
+                        <hr />
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+        <div>
+            <span class="hidden-text d-none text-light" id="version">{{version}}</span>
+        </div>
+    </div>
+
+    <!-- SEO Content - All content for search engines but hidden visually -->
+    <div class="seo-content">
+        <!-- Primary Resume Content -->
+        <h1>{{info.name}} - {{info.position}}</h1>
+        <p>{{info.name}} is a {{info.position}} with extensive experience in frontend development.</p>
+        
+        <h2>Skills</h2>
+        <p>Primary skills: {{skills.primary}}</p>
+        <p>Additional skills: {{skills.secondary}}</p>
+        
+        <h2>Work Experience</h2>
+        {{#each allJobs}}
+        <h3>{{title}} - {{position}}</h3>
+        <p>{{duration}} | {{city}}</p>
+        {{#if stack}}<p>Technologies: {{stack}}</p>{{/if}}
+        {{#each projects}}
+        {{#if title}}<h4>{{title}}</h4>{{/if}}
+        <ul>
+            {{#each achievements}}
+            <li>{{this}}</li>
+            {{/each}}
+            {{#each achievements_ru}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        {{/each}}
+        {{/each}}
+        
+        <h2>Contact Information</h2>
+        <ul>
+            {{#each links}}
+            <li><a href="{{href}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+
+        <!-- Startup-Targeted SEO Content -->
+        <h1>{{seo.startupTargeted.title}}</h1>
+        
+        {{#each seo.startupTargeted.headlines}}
+        <h2>{{this}}</h2>
+        {{/each}}
+        
+        <h2>Value Propositions for Startups</h2>
+        <ul>
+            {{#each seo.startupTargeted.valuePropositions}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        
+        <h2>Startup-Relevant Skills</h2>
+        <ul>
+            {{#each seo.startupTargeted.startupSkills}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        
+        <h2>Impact Metrics</h2>
+        <ul>
+            {{#each seo.startupTargeted.impactMetrics}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        
+        <h2>Industry Experience</h2>
+        <ul>
+            {{#each seo.startupTargeted.industries}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        
+        <h2>Technology Stack</h2>
+        <ul>
+            {{#each seo.startupTargeted.technologies}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        
+        <h2>Keywords for Startup Founders</h2>
+        <p>frontend engineer startup, react developer startup, typescript developer startup, senior frontend engineer, remote frontend developer, full stack developer startup, software engineer startup, web developer startup, mobile developer startup, react native developer, node.js developer, javascript developer, frontend lead, technical lead, startup developer, early stage startup developer, MVP developer, product developer, scalable web applications, performance optimization, user experience, code quality, team leadership, mentoring, agile development, rapid prototyping, API integration, backend collaboration, cross-platform development, CI/CD, testing, modern development practices</p>
+    </div>
+
+    <script>
+        // Constants
+        const version = `v${Date.now()}`;
+
+        // URL parsing
+        const query = new URLSearchParams(window.location.search)
+        const lang = query.get('lang') || document.documentElement.lang || 'en'
+        const langs = { en: 'ru', ru: 'en' }
+        const type = query.get('type') || 'resume'
+        const types = { resume: 'cv', cv: 'resume' }
+
+        // Translation data
+        const translations = {
+            resumeInPdf: { en: "Resume in PDF", ru: "Резюме в PDF" },
+            cvInPdf: { en: "CV in PDF", ru: "CV в PDF" },
+            workExp: { en: "Work Experience", ru: "Опыт работы" },
+            keySkills: { en: "Key Skills", ru: "Ключевые навыки" },
+            addSkills: { en: "Additional skills", ru: "Доп навыки" },
+            links: { en: "Links", ru: "Ссылки" }
+        };
+
+        // Functions
+        const switchLang = () => {
+            const newLang = langs[lang];
+            window.location.search = new URLSearchParams({
+                lang: newLang,
+                type
+            });
+        }
+
+        const switchType = () => {
+            const newType = types[type];
+            window.location.search = new URLSearchParams({
+                lang,
+                type: newType
+            });
+        }
+
+        const updateContent = () => {
+            // Hide all content sections
+            document.querySelectorAll('.resume-en, .resume-ru, .cv-en, .cv-ru').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Show the appropriate content section
+            const contentSection = document.querySelector(`.${type}-${lang}`);
+            if (contentSection) {
+                contentSection.style.display = 'block';
+            }
+
+            // Update translations
+            const fileTitle = type === 'resume' ? translations.resumeInPdf[lang] : translations.cvInPdf[lang];
+            const workExpTitle = translations.workExp[lang];
+            const keySkillsLabel = translations.keySkills[lang];
+            const addSkillsLabel = translations.addSkills[lang];
+            const linksTitle = translations.links[lang];
+
+            // Update PDF link
+            const pdfUrl = `https://gazedash.com/resume/${type}_${lang}.pdf`;
+            document.getElementById('pdf-link').href = pdfUrl;
+            document.getElementById('file-title').textContent = fileTitle;
+
+            // Update labels
+            document.getElementById('work-exp-title').textContent = workExpTitle;
+            document.getElementById('key-skills-label').textContent = keySkillsLabel;
+            document.getElementById('add-skills-label').textContent = addSkillsLabel;
+            document.getElementById('key-skills-label-mobile').textContent = keySkillsLabel;
+            document.getElementById('add-skills-label-mobile').textContent = addSkillsLabel;
+            document.querySelector('.d-none.d-sm-inline').textContent = linksTitle;
+
+            // Update navigation buttons
+            document.getElementById('next-type').textContent = types[type];
+            document.getElementById('next-lang').textContent = langs[lang];
+
+            // Update document title
+            document.title = `Andrei Efremov ${type === 'resume' ? 'Resume' : 'CV'}`;
+        }
+
+        // Print functionality
+        const emulatePrint = () => {
+            const printElements = document.querySelectorAll('.print-emulate');
+            printElements.forEach(el => {
+                el.classList.toggle('show');
+            });
+        }
+
+        const print = () => {
+            emulatePrint();
+            window.print();
+        }
+
+        // Initialize content
+        updateContent();
+
+        // Make functions globally available
+        window.switchLang = switchLang;
+        window.switchType = switchType;
+        window.print = print;
+        window.emulatePrint = emulatePrint;
+
+        // Show print-emulate elements on Alt+J
+        window.addEventListener('keydown', function(e) {
+            if (e.altKey && (e.key === 'j' || e.key === 'J')) {
+                const printElements = document.querySelectorAll('.print-emulate');
+                printElements.forEach(el => el.classList.add('show'));
+            }
+        });
+    </script>
+</body>
+
+</html> 

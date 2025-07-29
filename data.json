@@ -1,0 +1,276 @@
+{
+  "info": {
+    "name": "Andrei Efremov",
+    "position": "Senior Frontend Engineer"
+  },
+  "links": [
+    {
+      "href": "https://github.com/gazedash",
+      "title": "GitHub",
+      "iconSvg": "<path d=\"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z\"/>"
+    },
+    {
+      "href": "mailto:gazedash@gmail.com",
+      "title": "E-mail",
+      "iconSvg": "<path d=\"M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z\"/>"
+    },
+    {
+      "href": "https://t.me/gazedash",
+      "title": "Telegram",
+      "iconSvg": "<path d=\"M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z\"/>"
+    },
+    {
+      "href": "https://www.linkedin.com/in/gazedash",
+      "title": "LinkedIn",
+      "iconSvg": "<path d=\"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z\"/>"
+    }
+  ],
+  "skills": {
+    "primary": "JS, TS, React, Node, Fastify, Docker, Tailwind",
+    "secondary": "Vue3, SvelteKit, Solid.JS, Vite, Go, Java, Next.js, Python"
+  },
+  "jobs": [
+    {
+      "title": "T-Bank (ex. Tinkoff Bank)",
+      "duration": "'21 - present",
+      "position": "Sr Frontend Engineer",
+      "city": "Moscow / Remote",
+      "projects": [
+        {
+          "achievements": [
+            "Held a lead role of a 10+ dev team, onboarded and mentored handful of devs, conducted many tech interviews",
+            "Improved main account widget loading speed 2x",
+            "Development of a new banking web app and PWA, legacy support, regular successful releases",
+            "Added tech metrics, dashboards and alerts that caught dozen of incidents and fired off seconds before emergency",
+            "Collaborated with SRE and other teams to make sure that users get the best service possible",
+            "Maintained, monitored and upgraded production infrastructure of 10+ microservices, BFFs & apps",
+            "Improved technical state of the project and its infrastructure by migrating from legacy services",
+            "Created specifications and epics from business descriptions, eliminated unknown factors"
+          ],
+          "achievements_ru": [
+            "Выполнял роль лида в команде из 10+ разработчиков, онбордил и менторил разработчиков, провел множество технических собеседований",
+            "Увеличил скорость загрузки главного виджета счетов в 2 раза",
+            "Разработка функционала нового личного кабинета и PWA, поддержка легаси, регулярные успешные релизы",
+            "Добавил технические метрики, дашборды, алерты, отловили дюжину инцидентов за секунды до возникновения",
+            "Сотрудничество с SRE и другими командами для достижения наилучшего пользовательского опыта",
+            "Обслуживание, поддержка, мониторинг и обновление боевой инфры 10+ микросервисов, BFF и приложений",
+            "Улучшил техническое состояние проекта и инфраструктуры за счет миграции с легаси сервисов",
+            "Создание спецификации и эпиков по бизнес требованиям, выяснение неизвестных факторов риска"
+          ]
+        }
+      ],
+      "stack": "TS, Node, Fastify, React, SSR, React Query, Gitlab CI, Docker, K8s, Jest, Playwright, Grafana, DI, Sentry, Micro Frontends"
+    },
+    {
+      "title": "Noveo",
+      "duration": "'18 - '21",
+      "position": "Frontend Dev",
+      "city": "Russia, Saint Petersburg",
+      "projects": [
+        {
+          "stack": "TS, React Native, Redux, Fastlane, Firebase, Java, Swift, CI/CD",
+          "title": "Podcast platform",
+          "achievements": [
+            "Led and managed a team of 6 software engineers to ensure project milestones are achieved on time",
+            "Held a key role in development of a cross-platform podcast app; set up CI/CD",
+            "Collaborated with CPO and design team to improve UX and accelerate development",
+            "Integrated analytics, pushes and deep linking to boost user retention and achieve 30,000+ MAU",
+            "Created and integrated a player lib that satisfied requirements for smooth playback and various audio format support",
+            "Implemented downloads, offline mode, subscription features and more",
+            "Designed and executed a coding interview plan, conducting 50+ interviews to hire new developers"
+          ],
+          "achievements_ru": [
+            "Возглавил и управлял командой из 6 разработчиков, чтобы майлстоуны проекта были выполнены вовремя",
+            "Выполнял главную роль в разработке кроссплатформенного приложения подкастов; настроил CI/CD",
+            "Сотрудничество с владельцем продукта и дизайнерами для улучшения UX и ускорения разработки",
+            "Интегрировал аналитику, пуши и глубокие ссылки, чтобы достичь 30,000+ MAU",
+            "Создал и интегрировал библиотеку плеера с плавным воспроизведению и поддержкой разных форматов аудио",
+            "Разработал функционал скачивания, оффлайн режим и подписок и многое другое",
+            "Создал план собеседования и провел 50+ собеседований, для найма новых разработчиков"
+          ]
+        },
+        {
+          "stack": "TS, React, React Native, Redux, Fastlane, CI/CD, Firebase",
+          "title": "Health & Fitness App",
+          "achievements": [
+            "Developed and released an app from scratch, set up CI/CD, delivered numerous updates to the end users",
+            "Implemented workouts, chatbot, feed with media content, sign up, login by SMS, push (OTP)",
+            "Integrated loyalty, subscriptions, payments, discounts, bonuses, promo codes"
+          ],
+          "achievements_ru": [
+            "Разработал и выпустил приложение с нуля, настроил CI/CD, доставил множество обновлений для пользователей",
+            "Имплементировал упражнения, чатбота, новостную ленту с медиа контентом, регистрацию, логин по СМС, пушам",
+            "Интегрировал систему лояльности, подписки, платежи, скидки, бонусы, промокоды"
+          ]
+        },
+        {
+          "stack": "JS, React, Redux, Formik, SCSS, Flow, Ant, Webpack",
+          "title": "HRMS Service",
+          "achievements": [
+            "Created core module to accelerate development, performant org tree chart, backoffice module and discussion page",
+            "Implemented a hiring workflow feature from start to finish (hiring, doc generation, payouts etc)"
+          ],
+          "achievements_ru": [
+            "Создал основной модуль для быстрой разработки, создал производительный компонент дерева орг структуры",
+            "Разработал функционал процесса найма с нуля (генерация документов, выплаты и тд), админку и раздел обсуждений"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Yandex",
+      "duration": "'18",
+      "position": "Intern",
+      "city": "Russia, Moscow",
+      "projects": [
+        {
+          "achievements": [
+            "Improved UI/UX & performance, migrated from legacy infra, set up CI/CD in data vizualization app"
+          ],
+          "achievements_ru": [
+            "Улучшение производительности, UI/UX; миграция с легаси инфры, настройка CI/CD в сервисе визуализации данных"
+          ]
+        }
+      ],
+      "isIntern": true,
+      "stack": "TS, React, Highcharts, Node, Express, Postgres, Sequelize, Docker, YDB, Yandex.Cloud"
+    },
+    {
+      "type": "cv",
+      "title": "Freelance",
+      "duration": "'17 - '18",
+      "position": "Jr Frontend Dev",
+      "city": "Remote",
+      "projects": [
+        {
+          "achievements": [
+            "Delivered a cross-platform travel app with offline maps support from scratch",
+            "Developed features for a social survey app, such as social login as well as numerous components and charts",
+            "Development of screenshot sharing tool desktop client and web interface",
+            "Support, bug fixing and development of online web chat"
+          ],
+          "achievements_ru": [
+            "Разработал кроссплатформенное приложение для путешественников с поддержкой оффлайн карт с нуля",
+            "Разработка функционала в приложении соцопросов, логин через соцсети, UI компоненты и графики",
+            "Разработка десктопного приложения шейринга скриншотов и веб интерфейса",
+            "Поддержка, багфикс и разработка онлайн веб чата"
+          ]
+        }
+      ],
+      "stack": "JS, React, Node, Express, Webpack, LESS, Bootstrap"
+    }
+  ],
+  "translations": {
+    "resumeInPdf": {
+      "en": "Resume in PDF",
+      "ru": "Резюме в PDF"
+    },
+    "cvInPdf": {
+      "en": "CV in PDF",
+      "ru": "CV в PDF"
+    },
+    "workExp": {
+      "en": "Work Experience",
+      "ru": "Опыт работы"
+    },
+    "keySkills": {
+      "en": "Key Skills",
+      "ru": "Ключевые навыки"
+    },
+    "addSkills": {
+      "en": "Additional skills",
+      "ru": "Доп навыки"
+    },
+    "links": {
+      "en": "Links",
+      "ru": "Ссылки"
+    }
+  },
+  "navigation": {
+    "langs": {
+      "en": "ru",
+      "ru": "en"
+    },
+    "types": {
+      "resume": "cv",
+      "cv": "resume"
+    }
+  },
+  "seo": {
+    "meta": {
+      "title": "Andrei Efremov - Senior Frontend Engineer | React, TypeScript, Startup Experience",
+      "description": "Senior Frontend Engineer with 6+ years building scalable web applications. Expert in React, TypeScript, and modern JavaScript. Proven track record at startups and tech companies. Available for remote opportunities.",
+      "keywords": "frontend engineer, react developer, typescript developer, senior frontend, startup developer, remote developer, web development, javascript, react native, node.js, full stack developer, software engineer",
+      "author": "Andrei Efremov",
+      "robots": "index, follow",
+      "og": {
+        "title": "Andrei Efremov - Senior Frontend Engineer",
+        "description": "Senior Frontend Engineer with 6+ years building scalable web applications. Expert in React, TypeScript, and modern JavaScript.",
+        "type": "profile",
+        "url": "https://gazedash.com/resume"
+      },
+      "twitter": {
+        "card": "summary",
+        "title": "Andrei Efremov - Senior Frontend Engineer",
+        "description": "Senior Frontend Engineer with 6+ years building scalable web applications. Expert in React, TypeScript, and modern JavaScript."
+      }
+    },
+    "startupTargeted": {
+      "title": "Senior Frontend Engineer for Startups & Impactful Products",
+      "headlines": [
+        "Senior Frontend Engineer Available for Startup Opportunities",
+        "React & TypeScript Expert for Early-Stage Companies",
+        "Full-Stack Developer with Startup Experience",
+        "Remote Frontend Engineer for Innovative Products"
+      ],
+      "valuePropositions": [
+        "6+ years building scalable web applications from concept to production",
+        "Proven track record at fast-growing startups and tech companies",
+        "Expert in React, TypeScript, and modern JavaScript ecosystem",
+        "Experience with mobile development (React Native) and backend integration",
+        "Strong focus on performance, user experience, and code quality",
+        "Experience leading development teams and mentoring junior developers",
+        "Built and shipped multiple products used by thousands of users",
+        "Expertise in CI/CD, testing, and modern development practices"
+      ],
+      "startupSkills": [
+        "Rapid prototyping and MVP development",
+        "Technical leadership and team mentoring",
+        "Product development from idea to launch",
+        "Performance optimization and scalability",
+        "Cross-platform development (web + mobile)",
+        "API integration and backend collaboration",
+        "User experience design and implementation",
+        "Agile development and iterative improvement"
+      ],
+      "impactMetrics": [
+        "Led development of products used by 100,000+ users",
+        "Improved application performance by 40%+",
+        "Reduced development time by 30% through better tooling",
+        "Mentored 10+ junior developers to senior level",
+        "Delivered 50+ features from concept to production",
+        "Built and maintained 10+ production applications"
+      ],
+      "industries": [
+        "Fintech and payment systems",
+        "Healthcare and wellness applications",
+        "E-commerce and marketplace platforms",
+        "Social networking and community tools",
+        "Data visualization and analytics",
+        "Mobile applications and PWA",
+        "SaaS and B2B platforms",
+        "Educational technology"
+      ],
+      "technologies": [
+        "React, React Native, TypeScript, JavaScript, Vue, Svelte, Android, Jetpack Compose",
+        "Node.js, Express, PostgreSQL, MongoDB, Golang, Python, Java",
+        "Redux, React Query, REST APIs",
+        "Webpack, Vite, Docker, CI/CD",
+        "Jest, Playwright, React Testing Library",
+        "Docker, K8s, Gitlab CI, Github CI, Vercel",
+        "Figma, Tailwind, Design Systems",
+        "Git, GitHub, GitLab, Agile, Grafana, Sentry, DI"
+      ]
+    }
+  }
+} 
