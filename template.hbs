@@ -341,6 +341,35 @@
 </head>
 
 <body>
+    {{#*inline "job-item"}}
+    <div class="job">
+        <h6 class="ms-n2">
+            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
+        </h6>
+        <div class="job-projects">
+            {{#each projects}}
+            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
+                <h6>
+                    <span class="ms-2">{{title}}</span>
+                    <span class="fw-lighter">
+                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
+                    </span>
+                </h6>
+            </div>
+            <ul class="mb-1 ps-0">
+                {{#each achievements}}
+                <li class="achievement">{{this}}</li>
+                {{/each}}
+            </ul>
+            {{/each}}
+        </div>
+        {{#if stack}}
+        <div class="stack">
+            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
+        </div>
+        {{/if}}
+        <hr />
+    </div>
     <div id="app" style="max-width: 1200px; margin: 0 auto;">
         <section class="mt-1 mx-4">
             <header>
@@ -419,138 +448,28 @@
                 <!-- Resume English -->
                 <div class="resume-en" style="display: none;">
                     {{#each resumeEnJobs}}
-                    <div class="job">
-                        <h6 class="ms-n2">
-                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
-                        </h6>
-                        <div class="job-projects">
-                            {{#each projects}}
-                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
-                                <h6>
-                                    <span class="ms-2">{{title}}</span>
-                                    <span class="fw-lighter">
-                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
-                                    </span>
-                                </h6>
-                            </div>
-                            <ul class="mb-1 ps-0">
-                                {{#each achievements}}
-                                <li class="achievement">{{this}}</li>
-                                {{/each}}
-                            </ul>
-                            {{/each}}
-                        </div>
-                        {{#if stack}}
-                        <div class="stack">
-                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
-                        </div>
-                        {{/if}}
-                        <hr />
-                    </div>
+                    {{> job-item}}
                     {{/each}}
                 </div>
 
                 <!-- Resume Russian -->
                 <div class="resume-ru" style="display: none;">
                     {{#each resumeRuJobs}}
-                    <div class="job">
-                        <h6 class="ms-n2">
-                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
-                        </h6>
-                        <div class="job-projects">
-                            {{#each projects}}
-                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
-                                <h6>
-                                    <span class="ms-2">{{title}}</span>
-                                    <span class="fw-lighter">
-                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
-                                    </span>
-                                </h6>
-                            </div>
-                            <ul class="mb-1 ps-0">
-                                {{#each achievements}}
-                                <li class="achievement">{{this}}</li>
-                                {{/each}}
-                            </ul>
-                            {{/each}}
-                        </div>
-                        {{#if stack}}
-                        <div class="stack">
-                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
-                        </div>
-                        {{/if}}
-                        <hr />
-                    </div>
+                    {{> job-item}}
                     {{/each}}
                 </div>
 
                 <!-- CV English -->
                 <div class="cv-en" style="display: none;">
                     {{#each cvEnJobs}}
-                    <div class="job">
-                        <h6 class="ms-n2">
-                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
-                        </h6>
-                        <div class="cv-description" style="display: none;"></div>
-                        <div class="job-projects">
-                            {{#each projects}}
-                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
-                                <h6>
-                                    <span class="ms-2">{{title}}</span>
-                                    <span class="fw-lighter">
-                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
-                                    </span>
-                                </h6>
-                            </div>
-                            <ul class="mb-1 ps-0">
-                                {{#each achievements}}
-                                <li class="achievement">{{this}}</li>
-                                {{/each}}
-                            </ul>
-                            {{/each}}
-                        </div>
-                        {{#if stack}}
-                        <div class="stack">
-                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
-                        </div>
-                        {{/if}}
-                        <hr />
-                    </div>
+                    {{> job-item}}
                     {{/each}}
                 </div>
 
                 <!-- CV Russian -->
                 <div class="cv-ru" style="display: none;">
                     {{#each cvRuJobs}}
-                    <div class="job">
-                        <h6 class="ms-n2">
-                            <b class="job-title">{{title}}</b> <span class="job-position">{{position}}</span> <span class="job-duration">{{duration}}</span> <span class="fw-light job-city">{{city}}</span>
-                        </h6>
-                        <div class="cv-description" style="display: none;"></div>
-                        <div class="job-projects">
-                            {{#each projects}}
-                            <div class="project-title-container" {{#unless title}}style="display: none;"{{/unless}}>
-                                <h6>
-                                    <span class="ms-2">{{title}}</span>
-                                    <span class="fw-lighter">
-                                        | <span class="fw-light"></span><span class="project-stack">{{stack}}</span>
-                                    </span>
-                                </h6>
-                            </div>
-                            <ul class="mb-1 ps-0">
-                                {{#each achievements}}
-                                <li class="achievement">{{this}}</li>
-                                {{/each}}
-                            </ul>
-                            {{/each}}
-                        </div>
-                        {{#if stack}}
-                        <div class="stack">
-                            <span class="fw-lighter"><b>Stack</b>: <span class="job-stack">{{stack}}</span></span>
-                        </div>
-                        {{/if}}
-                        <hr />
-                    </div>
+                    {{> job-item}}
                     {{/each}}
                 </div>
             </div>
