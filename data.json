@@ -1,7 +1,9 @@
 {
   "info": {
     "name": "Andrei Efremov",
-    "position": "Senior Frontend Engineer"
+    "position": "Senior Frontend Engineer",
+    "role": "with extensive experience in frontend development.",
+    "site": "gazedash.com"
   },
   "links": [
     {
@@ -270,7 +272,29 @@
         "Docker, K8s, Gitlab CI, Github CI, Vercel",
         "Figma, Tailwind, Design Systems",
         "Git, GitHub, GitLab, Agile, Grafana, Sentry, DI"
-      ]
+      ],
+      "keywords": "frontend engineer startup, react developer startup, typescript developer startup, senior frontend engineer, remote frontend developer, full stack developer startup, software engineer startup, web developer startup, mobile developer startup, react native developer, node.js developer, javascript developer, frontend lead, technical lead, startup developer, early stage startup developer, MVP developer, product developer, scalable web applications, performance optimization, user experience, code quality, team leadership, mentoring, agile development, rapid prototyping, API integration, backend collaboration, cross-platform development, CI/CD, testing, modern development practices"
+    }
+  },
+  "analytics": {
+    "yandexMetrika": {
+      "trackingId": "103158808",
+      "script": "(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, \"script\", \"https://mc.yandex.ru/metrika/tag.js\", \"ym\");ym(103158808, \"init\", {clickmap:true,trackLinks:true,accurateTrackBounce:true});",
+      "noscript": "<div><img src=\"https://mc.yandex.ru/watch/103158808\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div>"
+    },
+    "cloudflare": {
+      "token": "844e06facc9746ec9d7101d3165214fd",
+      "script": "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"844e06facc9746ec9d7101d3165214fd\"}'></script>"
+    }
+  },
+  "structuredData": {
+    "knowsAbout": [
+      "React", "TypeScript", "JavaScript", "Frontend Development", 
+      "Web Development", "Mobile Development", "Startup Development"
+    ],
+    "worksFor": {
+      "type": "Organization",
+      "name": "Available for opportunities"
     }
   }
 } 

@@ -15,8 +15,8 @@ Handlebars.registerHelper('lookup', function(obj, key) {
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf8'));
 
 // Load template
-const templateSource = fs.readFileSync(path.join(__dirname, 'template.hbs'), 'utf8');
-const template = Handlebars.compile(templateSource);
+let templateSource = fs.readFileSync(path.join(__dirname, 'template.hbs'), 'utf8');
+let template = Handlebars.compile(templateSource);
 
 // Generate PDF URLs based on host
 function getPdfUrl(type, lang, host) {
@@ -50,9 +50,33 @@ function processJobsForLanguage(jobs, lang) {
     }));
 }
 
+// Process SEO data to replace template variables
+function processSeoData(seoData, site) {
+    const processedData = JSON.parse(JSON.stringify(seoData));
+    if (processedData.meta && processedData.meta.og && processedData.meta.og.url) {
+        processedData.meta.og.url = processedData.meta.og.url.replace('{{info.site}}', site);
+    }
+    return processedData;
+}
+
+// Process template data to replace template variables in JavaScript
+function processTemplateData(templateData, site, name) {
+    const processedData = JSON.parse(JSON.stringify(templateData));
+    
+    // Replace template variables in the template source
+    const templateSource = fs.readFileSync(path.join(__dirname, 'template.hbs'), 'utf8');
+    const processedSource = templateSource
+        .replace(/\{\{info\.site\}\}/g, site)
+        .replace(/\{\{info\.name\}\}/g, name);
+    
+    return { processedData, processedSource };
+}
+
 // Prepare template data with all combinations
 const templateData = {
     ...data,
+    // Process SEO data to replace template variables
+    seo: processSeoData(data.seo, data.info.site),
     // Resume English jobs
     resumeEnJobs: processJobsForLanguage(filterJobs(data.jobs, 'resume'), 'en'),
     // Resume Russian jobs
@@ -66,7 +90,7 @@ const templateData = {
     // Default values (will be overridden by JavaScript)
     lang: 'en',
     type: 'resume',
-    pdfUrl: getPdfUrl('resume', 'en', 'gazedash.com'),
+    pdfUrl: getPdfUrl('resume', 'en', data.info.site),
     fileTitle: data.translations.resumeInPdf.en,
     workExpTitle: data.translations.workExp.en,
     keySkillsLabel: data.translations.keySkills.en,
@@ -76,6 +100,11 @@ const templateData = {
     nextType: data.navigation.types.resume,
     version: `v${Date.now()}`
 };
+
+// Process template source to replace template variables
+const { processedSource } = processTemplateData(templateData, data.info.site, data.info.name);
+templateSource = processedSource;
+template = Handlebars.compile(templateSource);
 
 // Generate single HTML file
 const html = template(templateData);
