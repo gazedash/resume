@@ -40,7 +40,7 @@
       "projects": [
         {
           "achievements": [
-            "Lead a team of 10+ devs, onboarded and mentored handful of devs, conducted many tech interviews",
+            "Lead a team of 10+ devs, onboarded and mentored handful of devs, conducted many tech & fit interviews",
             "Improved main account widget loading speed 2x",
             "Development of a new banking web app and PWA, legacy support, regular successful releases",
             "Added tech metrics, dashboards and alerts that caught dozen of incidents and fired off seconds before emergency",
@@ -50,7 +50,7 @@
             "Created specifications and epics from business descriptions, eliminated unknown factors"
           ],
           "achievements_ru": [
-            "Выполнял роль лида в команде из 10+ разработчиков, онбордил и менторил разработчиков, провел множество технических собеседований",
+            "Выполнял роль лида в команде из 10+ разработчиков, онбордил и менторил разработчиков, провел множество технических собеседований и фит-интервью",
             "Увеличил скорость загрузки главного виджета счетов в 2 раза",
             "Разработка функционала нового личного кабинета и PWA, поддержка легаси, регулярные успешные релизы",
             "Добавил технические метрики, дашборды, алерты, отловили дюжину инцидентов за секунды до возникновения",
