@@ -662,6 +662,7 @@
         window.emulatePrint = emulatePrint;
 
         // Show print-emulate elements on Alt+J
+        console.log("Show print-emulate elements on Alt+J");
         window.addEventListener('keydown', function(e) {
             if (e.altKey && (e.key === 'j' || e.key === 'J')) {
                 const printElements = document.querySelectorAll('.print-emulate');
@@ -669,7 +670,7 @@
             }
         });
 
-        console.log("Don't hesitate! Hit me up on Telegram: https://t.me/gazedash");
+        console.log("{{ info.message }}");
     </script>
 </body>
 
